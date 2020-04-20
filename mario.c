@@ -1,9 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
 
-#include <cs50.h>
-#include <stdio.h>
-
 int main(void)
 {
     int height; //Declare the variable
@@ -17,13 +14,13 @@ int main(void)
         {
             for (int j = height - i - 1; j >= 0 ; j--) //Loops for the space
             {
-                printf("  ");
+                printf(" ");
             }
             for (int j = 0 ; j < i ; j++) //Loops for the '#'
             {
                 printf("#");
             }
-            printf(" ");
+            printf("  ");
             for (int j = 0 ; j < i ; j++) //Loops for the '#'
             {
                 printf("#");
