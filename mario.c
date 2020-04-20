@@ -3,8 +3,11 @@
 
 int main(void)
 {
-    int height = get_int("Height?"); //Get the height
-    if((height >= 1) && (height <= 8))
+    int height;
+    do
+    {
+        height = get_int("Height?"); //Get the height
+    }while(!(height >= 1) || !(height <= 8));
     {
         for (int i = 1; i <= height; i++)
         {
@@ -17,7 +20,6 @@ int main(void)
                 printf("#");
             }
             printf("\n");
-        //printf("Height: %d\n", height); //Print the name
-     }
+        }
     }
 }
