@@ -41,6 +41,6 @@ int main(void)
     if (count != 16) {count = 0; goto NUM;}
     if((sumEven+sumOdd)%10==0)
     {
-        printf("VISA");
+        printf("VISA\n");
     }
 }
