@@ -26,11 +26,8 @@ int main(void)
     int sumOdd = 0;
     int sumEven = 0;
     long numCopy;
-    do
-    {
-        num = get_long("Number:"); //Get the height
-    }
-    while (num < 0 && log10(num) != 15); //Re ask for the height if value < 0
+    num = get_long("Number:"); //Get the height
+    if (num < 0 && log10(num) != 15) {printf("INVALID\n");}
     numCopy = num;
     while(num != 0)
     {
