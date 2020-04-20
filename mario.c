@@ -17,7 +17,7 @@ int main(void)
         {
             for (int j = height - i - 1; j >= 0 ; j--) //Loops for the space
             {
-                printf(" ");
+                printf("  ");
             }
             for (int j = 0 ; j < i ; j++) //Loops for the '#'
             {
