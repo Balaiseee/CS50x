@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    int height = get_int("What is your name?\n"); //Get the height
+    int height = get_int("Height?"); //Get the height
     if(!(height <= 0))
     {
         for (int i = 1; i <= height; i++)
