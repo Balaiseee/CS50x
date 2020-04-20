@@ -9,7 +9,7 @@ int main(void)
     {
         change = get_float("Change owed:"); //Get the height
     }
-    while (!(change >= 0) || !(change <= 1)); //Re ask for the height if value is not between 0 and 1
+    while (!(change >= 0)); //Re ask for the height if value is not between 0 and 1
     int cents = round(change * 100);
     int coins = 0;
     coins += round(cents/25);
