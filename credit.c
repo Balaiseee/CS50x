@@ -52,8 +52,10 @@ int main(void)
         if (first_digit(numCopy,2) == 53 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n");}
         if (first_digit(numCopy,2) == 54 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n");}
         if (first_digit(numCopy,2) == 55 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n");}
+        else {printf("INVALID\n");}
     } else
     {
         printf("INVALID\n");
     }
+
 }
