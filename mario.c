@@ -6,7 +6,7 @@ int main(void)
     int height = get_int("What is your name?\n"); //Get the height
     if(!(height <= 0))
     {
-        for (int i = 0; i <= height; i++)
+        for (int i = 1; i <= height; i++)
         {
             for (int j = height-i-1; j >= 0 ; j--)
             {
