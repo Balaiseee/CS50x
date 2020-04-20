@@ -26,6 +26,7 @@ int main(void)
     int sumOdd = 0;
     int sumEven = 0;
     long numCopy;
+    bool wrote = false;
     num = get_long("Number:"); //Get the height
     numCopy = num;
     while(num != 0)
@@ -44,16 +45,16 @@ int main(void)
     }
     if((sumEven+sumOdd)%10==0)
     {
-        if (first_digit(numCopy,2) == 34 && round(log10(numCopy)) == 15) {printf("AMEX\n");}
-        if (first_digit(numCopy,2) == 37 && round(log10(numCopy)) == 15) {printf("AMEX\n");}
-        if (first_digit(numCopy,1) == 4 && (round(log10(numCopy)) == 13 || round(log10(numCopy)) == 16) ) {printf("VISA\n");}
+        if (first_digit(numCopy,2) == 34 && round(log10(numCopy)) == 15) {printf("AMEX\n"); wrote = true;}
+        if (first_digit(numCopy,2) == 37 && round(log10(numCopy)) == 15) {printf("AMEX\n"); wrote = true;}
+        if (first_digit(numCopy,1) == 4 && (round(log10(numCopy)) == 13 || round(log10(numCopy)) == 16) ) {printf("VISA\n"); wrote = true;}
         if (first_digit(numCopy,2) == 51 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n");}
-        if (first_digit(numCopy,2) == 52 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n");}
-        if (first_digit(numCopy,2) == 53 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n");}
-        if (first_digit(numCopy,2) == 54 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n");}
-        if (first_digit(numCopy,2) == 55 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n");}
-        else {printf("INVALID\n");}
-    } else
+        if (first_digit(numCopy,2) == 52 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n"); wrote = true;}
+        if (first_digit(numCopy,2) == 53 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n"); wrote = true;}
+        if (first_digit(numCopy,2) == 54 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n"); wrote = true;}
+        if (first_digit(numCopy,2) == 55 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n"); wrote = true;}
+        if (wrote == false) {printf("INVALID\n"); wrote = true;}
+    } else if (wrote == false)
     {
         printf("INVALID\n");
     }
