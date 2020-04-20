@@ -42,7 +42,6 @@ int main(void)
         int digit = num % 10;
         num = num / 10;
     }
-    printf("%f", log10(numCopy));
     if((sumEven+sumOdd)%10==0)
     {
         if (first_digit(numCopy,2) == 34 && round(log10(numCopy)) == 15) {printf("AMEX\n");}
