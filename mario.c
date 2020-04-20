@@ -4,7 +4,7 @@
 int main(void)
 {
     int height = get_int("Height?"); //Get the height
-    if(!(height <= 0))
+    if((height >= 1) && (height <= 8))
     {
         for (int i = 1; i <= height; i++)
         {
