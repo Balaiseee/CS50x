@@ -48,7 +48,7 @@ int main(void)
         if (first_digit(numCopy,2) == 34 && round(log10(numCopy)) == 15) {printf("AMEX\n"); wrote = true;}
         if (first_digit(numCopy,2) == 37 && round(log10(numCopy)) == 15) {printf("AMEX\n"); wrote = true;}
         if (first_digit(numCopy,1) == 4 && (round(log10(numCopy)) == 13 || round(log10(numCopy)) == 16) ) {printf("VISA\n"); wrote = true;}
-        if (first_digit(numCopy,2) == 51 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n");}
+        if (first_digit(numCopy,2) == 51 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n"); wrote = true;}
         if (first_digit(numCopy,2) == 52 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n"); wrote = true;}
         if (first_digit(numCopy,2) == 53 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n"); wrote = true;}
         if (first_digit(numCopy,2) == 54 && round(log10(numCopy)) == 16) {printf("MASTERCARD\n"); wrote = true;}
