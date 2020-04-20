@@ -12,6 +12,15 @@ int sum_digit(int num)
     }
     return sum;
 }
+int first_digit(long num)
+{
+    int first = num;
+    while(first >= 10)
+    {
+        first = first / 10;
+    }
+    return first;
+}
 
 int main(void)
 {
@@ -19,11 +28,13 @@ int main(void)
     int count = 0;
     int sumOdd = 0;
     int sumEven = 0;
+    long numCopy;
     NUM:do
     {
         num = get_long("Number:"); //Get the height
     }
     while (num < 0); //Re ask for the height if value < 0
+    numCopy = num;
     while(num != 0)
     {
         if (count%2==1)
@@ -41,6 +52,8 @@ int main(void)
     if (count != 16) {count = 0; goto NUM;}
     if((sumEven+sumOdd)%10==0)
     {
-        printf("VISA\n");
+        if (first_digit(numCopy) == 3) {printf("AMEX\n");}
+        if (first_digit(numCopy) == 4) {printf("VISA\n");}
+        if (first_digit(numCopy) == 5) {printf("MASTERCARD\n");}
     }
 }
