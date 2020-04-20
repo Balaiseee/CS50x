@@ -27,9 +27,9 @@ int main(void)
     int sumEven = 0;
     long numCopy;
     num = get_long("Number:"); //Get the height
-    if (log10(num) != 13) {printf("INVALID\n");}
-    if (log10(num) != 15) {printf("INVALID\n");}
-    if (log10(num) != 16) {printf("INVALID\n");}
+    if (log10(num) != 13) {goto END;}
+    if (log10(num) != 15) {goto END;}
+    if (log10(num) != 16) {goto END;}
     numCopy = num;
     while(num != 0)
     {
@@ -57,6 +57,6 @@ int main(void)
         if (first_digit(numCopy,2) == 55) {printf("MASTERCARD\n");}
     } else
     {
-        printf("INVALID\n");
+        END:printf("INVALID\n");
     }
 }
