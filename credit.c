@@ -12,10 +12,10 @@ int sum_digit(int num)
     }
     return sum;
 }
-int first_digit(long num)
+int first_digit(long num, int nb)
 {
   	int Count = log10(num);
-  	int FirstDigit = num / pow(10, Count);
+  	int FirstDigit = num / pow(10, Count-nb+1);
     return FirstDigit;
 }
 
@@ -48,9 +48,14 @@ int main(void)
     }
     if((sumEven+sumOdd)%10==0)
     {
-        if (first_digit(numCopy) == 3) {printf("AMEX\n");}
-        if (first_digit(numCopy) == 4) {printf("VISA\n");}
-        if (first_digit(numCopy) == 5) {printf("MASTERCARD\n");}
+        if (first_digit(numCopy,2) == 34) {printf("AMEX\n");}
+        if (first_digit(numCopy,2) == 37) {printf("AMEX\n");}
+        if (first_digit(numCopy,1) == 4) {printf("VISA\n");}
+        if (first_digit(numCopy,2) == 51) {printf("MASTERCARD\n");}
+        if (first_digit(numCopy,2) == 52) {printf("MASTERCARD\n");}
+        if (first_digit(numCopy,2) == 53) {printf("MASTERCARD\n");}
+        if (first_digit(numCopy,2) == 54) {printf("MASTERCARD\n");}
+        if (first_digit(numCopy,2) == 55) {printf("MASTERCARD\n");}
     } else
     {
         printf("INVALID\n");
