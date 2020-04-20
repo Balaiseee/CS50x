@@ -27,7 +27,6 @@ int main(void)
     int sumEven = 0;
     long numCopy;
     num = get_long("Number:"); //Get the height
-    if (log10(num) != 13 && log10(num) != 15 && log10(num) != 16) {goto END;}
     numCopy = num;
     while(num != 0)
     {
@@ -45,16 +44,16 @@ int main(void)
     }
     if((sumEven+sumOdd)%10==0)
     {
-        if (first_digit(numCopy,2) == 34) {printf("AMEX\n");}
-        if (first_digit(numCopy,2) == 37) {printf("AMEX\n");}
-        if (first_digit(numCopy,1) == 4) {printf("VISA\n");}
-        if (first_digit(numCopy,2) == 51) {printf("MASTERCARD\n");}
-        if (first_digit(numCopy,2) == 52) {printf("MASTERCARD\n");}
-        if (first_digit(numCopy,2) == 53) {printf("MASTERCARD\n");}
-        if (first_digit(numCopy,2) == 54) {printf("MASTERCARD\n");}
-        if (first_digit(numCopy,2) == 55) {printf("MASTERCARD\n");}
+        if (first_digit(numCopy,2) == 34 && log10(numCopy) == 15) {printf("AMEX\n");}
+        if (first_digit(numCopy,2) == 37 && log10(numCopy) == 15) {printf("AMEX\n");}
+        if (first_digit(numCopy,1) == 4 && (log10(numCopy) == 13 || log10(numCopy) == 16) ) {printf("VISA\n");}
+        if (first_digit(numCopy,2) == 51 && log10(numCopy) == 16) {printf("MASTERCARD\n");}
+        if (first_digit(numCopy,2) == 52 && log10(numCopy) == 16) {printf("MASTERCARD\n");}
+        if (first_digit(numCopy,2) == 53 && log10(numCopy) == 16) {printf("MASTERCARD\n");}
+        if (first_digit(numCopy,2) == 54 && log10(numCopy) == 16) {printf("MASTERCARD\n");}
+        if (first_digit(numCopy,2) == 55 && log10(numCopy) == 16) {printf("MASTERCARD\n");}
     } else
     {
-        END:printf("INVALID\n");
+        printf("INVALID\n");
     }
 }
