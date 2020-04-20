@@ -27,9 +27,7 @@ int main(void)
     int sumEven = 0;
     long numCopy;
     num = get_long("Number:"); //Get the height
-    if (log10(num) != 13) {goto END;}
-    if (log10(num) != 15) {goto END;}
-    if (log10(num) != 16) {goto END;}
+    if (!(log10(num) == 13 || log10(num) == 15 || log10(num) == 16)) {goto END;}
     numCopy = num;
     while(num != 0)
     {
