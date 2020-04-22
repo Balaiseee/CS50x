@@ -25,14 +25,7 @@ int main(int argc, string argv[])
             {
                 e = strchr(min, plaintext[i]);
                 index = (int)(e - min);
-                if(strlen(min)< index+key)
-                {
-                    ciphertext[i] = min[index+key-strlen(min)];    
-                }
-                else
-                {
-                    ciphertext[i] = min[index+key];
-                }
+                ciphertext[i] = min[(index+key)%26];
             }
             else if ((plaintext[i] >= 'A' && plaintext[i] <= 'Z'))
             {
