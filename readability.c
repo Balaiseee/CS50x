@@ -57,7 +57,7 @@ int wordCounting (string text)
 
 int sentenceCounting (string text)
 {
-    int count = 0;
+    int count = 1;
     for (int i = 0, n = strlen(text); i < n; i++)
     {
         if(text[i] == '.')
@@ -70,7 +70,7 @@ int sentenceCounting (string text)
 
 int index(float letters, float sentences, float words)
 {
-    float L = letters/words*(float)100;
-    float S = sentences/words*(float)100;
+    float L = letters/words*100;
+    float S = sentences/words*100;
     return round(0.0588 * L - 0.296 * S - 15.8);
 }
