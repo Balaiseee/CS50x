@@ -7,7 +7,7 @@
 
 int main(int argc, string argv[])
 {
-    if(argc == 2)
+    if(argc == 2 && (argv[1][0] >= '0' && argv[1][0] <= '9'))
     {
         int key = atoi(argv[1]);
         printf("Key: %i\n", key);
