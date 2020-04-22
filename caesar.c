@@ -31,14 +31,7 @@ int main(int argc, string argv[])
             {
                 e = strchr(maj, plaintext[i]);
                 index = (int)(e - maj);
-                if(strlen(maj)< index+key)
-                {
-                    ciphertext[i] = maj[index+key-strlen(maj)];    
-                }
-                else
-                {
-                    ciphertext[i] = maj[index+key];
-                }
+                ciphertext[i] = maj[(index+key)%26];
             }
         }
         printf("ciphertext: %s\n", ciphertext);
