@@ -4,10 +4,10 @@
 #include <ctype.h> //isdigit isalpha
 #include <stdlib.h>
 #include <string.h>
-
+bool isNumber(string text);
 int main(int argc, string argv[])
 {
-    if(argc == 2 && (argv[1][0] >= '0' && argv[1][0] <= '9'))
+    if(argc == 2 && isNumber(argv[1]))
     {
         int key = atoi(argv[1]);
         printf("Key: %i\n", key);
@@ -30,5 +30,18 @@ int main(int argc, string argv[])
         printf("Usage: ./caesar key\n");
         return 1;
     }
+}
 
+bool isNumber(string text)
+{
+    int j;
+    j = strlen(text);
+    while(j--)
+    {
+        if(text[j] >= '0' && text[j] <= '9')
+            continue;
+
+        return false;
+    }
+    return true;
 }
