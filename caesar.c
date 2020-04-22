@@ -7,7 +7,7 @@
 
 int main(int argc, string argv[])
 {
-    if(argc == 2 && isdigit(atoi(argv[1])))
+    if(argc == 2 && (atoi(argv[1])))
     {
         int key = atoi(argv[1]);
         printf("Key: %i\n", key);
