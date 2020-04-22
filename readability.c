@@ -7,7 +7,7 @@
 int wordCounting (string text);
 int letterCounting (string text);
 int sentenceCounting (string text);
-int index (float letters, float sentences, float words);
+int index (int letters, int sentences, int words);
 
 int main (void) {
     string text = get_string("Text : ");
@@ -68,9 +68,9 @@ int sentenceCounting (string text)
     return count;
 }
 
-int index(float letters, float sentences, float words)
+int index(int letters, int sentences, int words)
 {
-    float L = (letters/words)*100;
-    float S = (sentences/words)*100;
+    float L = ((float)letters/(float)words)*100;
+    float S = ((float)sentences/(float)words)*100;
     return round(0.0588 * L - 0.296 * S - 15.8);
 }
