@@ -1,11 +1,12 @@
 #include <stdio.h> //printf
 #include <cs50.h> //get_string
 #include <string.h> //strlen
-#include <ctype.h>
-bool isLetter(string text);
-bool isUnique(string text);
-char* upperCase(char* arr);
-char* lowerCase(char* arr);
+#include <ctype.h> //toupper & tolower
+bool isLetter(string text); //Function that returns true if the string contains only letters
+bool isUnique(string text); //Function that returns true if the string contains only unique elements
+char* upperCase(char* arr); //Function that puts an array of char in uppercase
+char* lowerCase(char* arr); //Function that puts an array of char in lowercase
+
 int main(int argc, string argv[])
 {
     if (argc != 2)
@@ -42,15 +43,15 @@ int main(int argc, string argv[])
             {
                 e = strchr(min, plaintext[i]);
                 index = (int)(e - min); //Get the index of the character in the alphabet
-                char *keymin = lowerCase(key);
-                ciphertext[i] = keymin[(index) % 26]; //Caesar’s algorithm
+                char *keymin = lowerCase(key); //Lowercase Key
+                ciphertext[i] = keymin[(index) % 26]; //Substitution’s algorithm
             }
             else if ((plaintext[i] >= 'A' && plaintext[i] <= 'Z'))
             {
                 e = strchr(maj, plaintext[i]);
                 index = (int)(e - maj); //Get the index of the character in the alphabet
-                char *keymaj = upperCase(key);
-                ciphertext[i] = keymaj[(index) % 26];//Caesar’s algorithm
+                char *keymaj = upperCase(key); //Uppercase Alphabet
+                ciphertext[i] = keymaj[(index) % 26];//Substitution’s algorithm
             }
         }
         printf("ciphertext: %s\n", ciphertext);
@@ -60,9 +61,8 @@ int main(int argc, string argv[])
 char* upperCase(char* arr)
 {
     int i = 0;
-    char c;
     char *str = arr;
-	
+
     while(str[i])
     {
         str[i] = toupper(arr[i]);
@@ -73,9 +73,8 @@ char* upperCase(char* arr)
 char* lowerCase(char* arr)
 {
     int i = 0;
-    char c;
     char *str = arr;
-	
+
     while(str[i])
     {
         str[i] = tolower(arr[i]);
@@ -83,10 +82,9 @@ char* lowerCase(char* arr)
     }
     return str;
 }
-bool isLetter(string text) //Function that returns if the string is a letter
+bool isLetter(string text) //Function that returns true if the string contains only letters
 {
-    int j;
-    j = strlen(text);
+    int j = strlen(text);
     while (j--)
     {
         if ((text[j] >= 'A' && text[j] <= 'Z') || (text[j] >= 'a' && text[j] <= 'z'))
@@ -97,7 +95,7 @@ bool isLetter(string text) //Function that returns if the string is a letter
     }
     return true;
 }
-bool isUnique(string text) //Function that returns if the string is a letter
+bool isUnique(string text) //Function that returns true if the string contains only unique elements
 {
     int size = strlen(text);
     for (int i = 0; i < size; i++)
