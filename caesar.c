@@ -4,7 +4,9 @@
 #include <ctype.h> //isdigit isalpha
 #include <stdlib.h>
 #include <string.h>
+
 bool isNumber(string text);
+
 int main(int argc, string argv[])
 {
     if(argc == 2 && isNumber(argv[1]))
@@ -15,7 +17,7 @@ int main(int argc, string argv[])
         string ciphertext = plaintext;
         for (int i = 0, n = strlen(plaintext); i< n; i++)
         {
-            if ((ciphertext[i] >= 'a' && ciphertext[i] <= 'z') || (ciphertext[i] >= 'A' && ciphertext[i] <= 'Z'))
+            if (((plaintext[i] >= 'a' && plaintext[i] <= 'z') || (plaintext[i] >= 'A' && plaintext[i] <= 'Z')) && ((plaintext[i] + key % 26 >= 'a' && plaintext[i] + key % 26 <= 'z') || (plaintext[i] + key % 26 >= 'A' && plaintext[i] + key % 26 <= 'Z')))
             {
                 ciphertext[i] = plaintext[i] + key % 26;
             } else
