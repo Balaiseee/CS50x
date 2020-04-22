@@ -15,15 +15,37 @@ int main(int argc, string argv[])
         printf("Key: %i\n", key);
         string plaintext = get_string("plaintext:  ");
         string ciphertext = plaintext;
+        char *min = "abcdefghijklmnopqrstuvwxyz";
+        char *maj = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        char *e;
+        int index;
         for (int i = 0, n = strlen(plaintext); i< n; i++)
         {
             if ((plaintext[i] >= 'a' && plaintext[i] <= 'z'))
             {
-                ciphertext[i] = plaintext[i] + key -97 %26;
+                e = strchr(min, plaintext[i]);
+                index = (int)(e - min);
+                if(strlen(min)< index+key)
+                {
+                    ciphertext[i] = min[index+key-strlen(min)];    
+                }
+                else
+                {
+                    ciphertext[i] = min[index+key];
+                }
             }
-            if ((plaintext[i] >= 'A' && plaintext[i] <= 'Z'))
+            else if ((plaintext[i] >= 'A' && plaintext[i] <= 'Z'))
             {
-                ciphertext[i] = plaintext[i] + key -97 %26;
+                e = strchr(maj, plaintext[i]);
+                index = (int)(e - maj);
+                if(strlen(maj)< index+key)
+                {
+                    ciphertext[i] = maj[index+key-strlen(maj)];    
+                }
+                else
+                {
+                    ciphertext[i] = maj[index+key];
+                }
             }
         }
         printf("ciphertext: %s\n", ciphertext);
