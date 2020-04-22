@@ -21,11 +21,11 @@ int main(int argc, string argv[])
             {
                 if(tolower(plaintext[i]-97)<key)
                 {
-                    ciphertext[i] = plaintext[i]+key;   
+                    ciphertext[i] = plaintext[i]+key %26;   
                 }
                 else
                 {
-                    ciphertext[i] = plaintext[i]-key;
+                    ciphertext[i] = plaintext[i]-key%26;
                 }
             }
             else
