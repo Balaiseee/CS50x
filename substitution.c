@@ -3,6 +3,7 @@
 #include <string.h> //strlen
 #include <ctype.h>
 bool isLetter(string text);
+bool isUnique(string text);
 char* upperCase(char* arr);
 char* lowerCase(char* arr);
 int main(int argc, string argv[])
@@ -18,6 +19,10 @@ int main(int argc, string argv[])
         return 1;
     }
     else if (!isLetter(argv[1]))
+    {
+        return 1;
+    }
+    else if (!isUnique(argv[1]))
     {
         return 1;
     }
@@ -89,6 +94,21 @@ bool isLetter(string text) //Function that returns if the string is a letter
             continue;
         }
         return false;
+    }
+    return true;
+}
+bool isUnique(string text) //Function that returns if the string is a letter
+{
+    int size = strlen(text);
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            if(text[i] == text[j])
+            {
+                return false;
+            }
+        }
     }
     return true;
 }
