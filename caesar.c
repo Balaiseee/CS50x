@@ -1,9 +1,8 @@
 #include <stdio.h> //printf
 #include <cs50.h> //get_string
 #include <string.h> //strlen
-#include <ctype.h> //isdigit isalpha
 #include <stdlib.h>
-#include <string.h>
+//#include <string.h>
 
 bool isNumber(string text);
 
