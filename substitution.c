@@ -4,8 +4,8 @@
 #include <ctype.h> //toupper & tolower
 bool isLetter(string text); //Function that returns true if the string contains only letters
 bool isUnique(string text); //Function that returns true if the string contains only unique elements
-char* upperCase(char* arr); //Function that puts an array of char in uppercase
-char* lowerCase(char* arr); //Function that puts an array of char in lowercase
+char *upperCase(char *arr); //Function that puts an array of char in uppercase
+char *lowerCase(char *arr); //Function that puts an array of char in lowercase
 
 int main(int argc, string argv[])
 {
@@ -29,7 +29,7 @@ int main(int argc, string argv[])
     }
     else
     {
-        char* key = argv[1];
+        char *key = argv[1];
         printf("Key: %s\n", key);
         string plaintext = get_string("plaintext:  ");
         string ciphertext = plaintext;
@@ -58,24 +58,24 @@ int main(int argc, string argv[])
     }
 }
 
-char* upperCase(char* arr)
+char *upperCase(char *arr)
 {
     int i = 0;
     char *str = arr;
 
-    while(str[i])
+    while (str[i])
     {
         str[i] = toupper(arr[i]);
         i++;
     }
     return str;
 }
-char* lowerCase(char* arr)
+char *lowerCase(char *arr)
 {
     int i = 0;
     char *str = arr;
 
-    while(str[i])
+    while (str[i])
     {
         str[i] = tolower(arr[i]);
         i++;
@@ -102,7 +102,7 @@ bool isUnique(string text) //Function that returns true if the string contains o
     {
         for (int j = 0; j < i; j++)
         {
-            if(text[i] == text[j])
+            if (text[i] == text[j])
             {
                 return false;
             }
