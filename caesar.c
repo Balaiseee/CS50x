@@ -15,7 +15,7 @@ int main(int argc, string argv[])
         string ciphertext = plaintext;
         for (int i = 0, n = strlen(plaintext); i< n; i++)
         {
-            if ((ciphertext[i] >= 'a'+key && ciphertext[i] <= 'z'+key) || (ciphertext[i] >= 'A'+key && ciphertext[i] <= 'Z'+key))
+            if ((ciphertext[i] >= 'a' && ciphertext[i] <= 'z') || (ciphertext[i] >= 'A' && ciphertext[i] <= 'Z'))
             {
                 ciphertext[i] = plaintext[i] + key % 26;
             } else
