@@ -70,7 +70,7 @@ int sentenceCounting (string text)
 
 int index(int letters, int sentences, int words)
 {
-    float L = ((float)letters/(float)words)*(float)100;
-    float S = ((float)sentences/(float)words)*(float)100;
+    float L = letters/words*(float)100;
+    float S = sentences/words*(float)100;
     return round(0.0588 * L - 0.296 * S - 15.8);
 }
