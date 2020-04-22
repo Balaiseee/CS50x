@@ -15,7 +15,7 @@ int main(int argc, string argv[])
         string ciphertext = plaintext;
         for (int i = 0, n = strlen(plaintext); i< n; i++)
         {
-            ciphertext[i] = plaintext[i] + key;
+            ciphertext[i] = plaintext[i] + key % 26;
         }
         printf("ciphertext: %s\n", ciphertext);
     }
