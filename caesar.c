@@ -17,10 +17,18 @@ int main(int argc, string argv[])
         string ciphertext = plaintext;
         for (int i = 0, n = strlen(plaintext); i< n; i++)
         {
-            if (((plaintext[i] >= 'a' && plaintext[i] <= 'z') || (plaintext[i] >= 'A' && plaintext[i] <= 'Z')) && ((plaintext[i] + key % 26 >= 'a' && plaintext[i] + key % 26 <= 'z') || (plaintext[i] + key % 26 >= 'A' && plaintext[i] + key % 26 <= 'Z')))
+            if ((plaintext[i] >= 'a' && plaintext[i] <= 'z') || (plaintext[i] >= 'A' && plaintext[i] <= 'Z'))
             {
-                ciphertext[i] = plaintext[i] + key % 26;
-            } else
+                if(tolower(plaintext[i]-97)<key)
+                {
+                    ciphertext[i] = plaintext[i]+key;   
+                }
+                else
+                {
+                    ciphertext[i] = plaintext[i]-key;
+                }
+            }
+            else
             {
                 ciphertext[i] = plaintext[i];
             }
