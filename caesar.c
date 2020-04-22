@@ -7,7 +7,7 @@
 
 int main(int argc, string argv[])
 {
-    if(argc == 2 && (atoi(argv[1])))
+    if(argc == 2)
     {
         int key = atoi(argv[1]);
         printf("Key: %i\n", key);
@@ -18,6 +18,9 @@ int main(int argc, string argv[])
             if (isalpha(plaintext[i]))
             {
                 ciphertext[i] = plaintext[i] + key % 26;
+            } else
+            {
+                ciphertext[i] = plaintext[i];
             }
         }
         printf("ciphertext: %s\n", ciphertext);
