@@ -1,13 +1,13 @@
 #include <stdio.h> //printf
 #include <cs50.h> //get_string
 #include <string.h> //strlen
-#include <ctype.h> //isdigit
+#include <ctype.h> //isdigit isalpha
 #include <stdlib.h>
 #include <string.h>
 
 int main(int argc, string argv[])
 {
-    if(argc == 2)
+    if(argc == 2 && isdigit(atoi(argv[1])))
     {
         int key = atoi(argv[1]);
         printf("Key: %i\n", key);
