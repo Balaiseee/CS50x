@@ -13,10 +13,20 @@ int main (void) {
     string text = get_string("Text : ");
     int letters = 0;
     //printf("%s\n", text);
-    printf("%i letter(s) \n", letterCounting(text));
-    printf("%i word(s) \n", wordCounting(text));
-    printf("%i sentence(s) \n", sentenceCounting(text));
-    printf("Grade %i\n", index(letterCounting(text),sentenceCounting(text), wordCounting(text)));
+    //printf("%i letter(s) \n", letterCounting(text));
+    //printf("%i word(s) \n", wordCounting(text));
+    //printf("%i sentence(s) \n", sentenceCounting(text));
+    int grade = index(letterCounting(text),sentenceCounting(text), wordCounting(text));
+    if (grade < 1)
+    {
+        printf("Before Grade 1\n");
+    } else if (grade > 16)
+    {
+        printf("Grade 16+\n");
+    } else
+    {
+        printf("Grade %i\n", grade);
+    }
 }
 
 int letterCounting (string text)
