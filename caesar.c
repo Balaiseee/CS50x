@@ -17,20 +17,13 @@ int main(int argc, string argv[])
         string ciphertext = plaintext;
         for (int i = 0, n = strlen(plaintext); i< n; i++)
         {
-            if ((plaintext[i] >= 'a' && plaintext[i] <= 'z') || (plaintext[i] >= 'A' && plaintext[i] <= 'Z'))
+            if ((plaintext[i] >= 'a' && plaintext[i] <= 'z'))
             {
-                if(tolower(plaintext[i]-97)<key)
-                {
-                    ciphertext[i] = plaintext[i]+key %26;   
-                }
-                else
-                {
-                    ciphertext[i] = plaintext[i]-key%26;
-                }
+                ciphertext[i] = plaintext[i] + key -97 %26;
             }
-            else
+            if ((plaintext[i] >= 'A' && plaintext[i] <= 'Z'))
             {
-                ciphertext[i] = plaintext[i];
+                ciphertext[i] = plaintext[i] + key -97 %26;
             }
         }
         printf("ciphertext: %s\n", ciphertext);
