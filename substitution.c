@@ -2,7 +2,7 @@
 #include <cs50.h> //get_string
 #include <string.h> //strlen
 #include <ctype.h>
-bool isNumber(string text);
+bool isLetter(string text);
 char* upperCase(char* arr);
 char* lowerCase(char* arr);
 int main(int argc, string argv[])
@@ -15,6 +15,10 @@ int main(int argc, string argv[])
     else if (strlen(argv[1]) != 26)
     {
         printf("Key must contain 26 characters.\n");
+        return 1;
+    }
+    else if (!isLetter(argv[1]))
+    {
         return 1;
     }
     else
@@ -73,4 +77,18 @@ char* lowerCase(char* arr)
         i++;
     }
     return str;
+}
+bool isLetter(string text) //Function that returns if the string is a letter
+{
+    int j;
+    j = strlen(text);
+    while (j--)
+    {
+        if ((text[j] >= 'A' && text[j] <= 'Z') || (text[j] >= 'a' && text[j] <= 'z'))
+        {
+            continue;
+        }
+        return false;
+    }
+    return true;
 }
