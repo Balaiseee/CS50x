@@ -89,6 +89,12 @@ void print_winner(void)
             index = i;
         }
     }
-    printf("%s\n", candidates[index].name);
+    for (int i = 0; i< candidate_count; i++)
+    {
+        if (max == candidates[i].votes)
+        {
+            printf("%s\n", candidates[index].name);
+        }
+    }
     return;
 }
