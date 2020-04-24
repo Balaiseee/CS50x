@@ -191,19 +191,11 @@ bool print_winner(void)
     {
         if (max < candidates[i].votes && !candidates[i].eliminated)
         {
-            max = candidates[i].votes;
-            index = i;
+            printf("%s\n", candidates[index].name);
+            return true;
         }
     }
-    for (int i = 0; i < candidate_count; i++)
-    {
-        if (max == candidates[i].votes && !candidates[i].eliminated)
-        {
-            return false;
-        }
-    }
-    printf("%s\n", candidates[index].name);
-    return true;
+    return false;
 }
 
 // Return the minimum number of votes any remaining candidate has
