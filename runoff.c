@@ -176,6 +176,9 @@ void tabulate(void)
                  //printf("preferences[%i][%i] = %i\n", i, j, preferences[i][j]);
                  //printf("candidates[%i] = %i\n", j, candidates[preferences[i][j]].votes);
                  break;
+            } else
+            {
+                continue;
             }
         }
         printf("\n");
