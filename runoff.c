@@ -186,7 +186,7 @@ void tabulate(void)
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
-    int max = 0, index = 0;
+    int max = voter_count/2, index = 0;
     for (int i = 0; i < candidate_count; i++)
     {
         if (max < candidates[i].votes)
