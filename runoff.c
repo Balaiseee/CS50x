@@ -191,7 +191,7 @@ bool print_winner(void)
     {
         if (max < candidates[i].votes && !candidates[i].eliminated)
         {
-            printf("%s\n", candidates[index].name);
+            printf("%s\n", candidates[i].name);
             return true;
         }
     }
