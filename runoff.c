@@ -128,6 +128,17 @@ int main(int argc, string argv[])
 // Record preference if vote is valid
 bool vote(int voter, int rank, string name)
 {
+    // Check if name is unique
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            if (candidates[i].name == candidates[j].name)
+            {
+                return false;
+            }
+        }
+    }
     // Check if name is valid
     for (int i = 0; i < candidate_count; i++)
     {
