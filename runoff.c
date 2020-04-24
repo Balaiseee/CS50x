@@ -202,7 +202,6 @@ bool print_winner(void)
             return false;
         }
     }
-    printf("WINNER");
     printf("%s\n", candidates[index].name);
     return true;
 }
