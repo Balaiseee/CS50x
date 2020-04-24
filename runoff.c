@@ -143,7 +143,7 @@ bool vote(int voter, int rank, string name)
     // Check if name is valid
     for (int i = 0; i < candidate_count; i++)
     {
-        if (strcmp(name,candidates[i].name) == 0)
+        if (strcmp(name, candidates[i].name) == 0)
         {
             preferences[voter][rank] = i;
             return true;
@@ -157,9 +157,9 @@ void tabulate(void)
 {
     for (int i = 0; i < voter_count; i++)
     {
-        for(int j = 0; j < candidate_count; j++)
+        for (int j = 0; j < candidate_count; j++)
         {
-            if(!candidates[preferences[i][j]].eliminated)
+            if (!candidates[preferences[i][j]].eliminated)
             {
                 candidates[preferences[i][j]].votes += 1;
                 break;
@@ -172,7 +172,7 @@ void tabulate(void)
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
-    int max = voter_count/2, index = 0;
+    int max = voter_count / 2, index = 0;
     for (int i = 0; i < candidate_count; i++)
     {
         if (max < candidates[i].votes && !candidates[i].eliminated)
