@@ -189,7 +189,7 @@ bool print_winner(void)
     int max = voter_count/2, index = 0;
     for (int i = 0; i < candidate_count; i++)
     {
-        if (max <= candidates[i].votes && !candidates[i].eliminated)
+        if (max < candidates[i].votes && !candidates[i].eliminated)
         {
             printf("%s\n", candidates[index].name);
             return true;
