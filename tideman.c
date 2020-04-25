@@ -154,7 +154,7 @@ void sort_pairs(void)
         scores[i] = pairs[i].winner - pairs[i].loser;
     }
     mergesort(scores, 0, pair_count - 1);
-    for (int i = 0; i < pair_count; i++)
+    /*for (int i = 0; i < pair_count; i++)
     {
         for (int j = 0; j < pair_count; j++)
         {
@@ -165,7 +165,7 @@ void sort_pairs(void)
                 pairs[j] = temp;
             }
         }
-    }
+    }*/
     return;
 }
 
