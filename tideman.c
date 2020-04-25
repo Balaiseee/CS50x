@@ -33,6 +33,8 @@ void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
+void mergesort(int a[],int i,int j);
+void merge(int a[],int i1,int j1,int i2,int j2);
 
 int main(int argc, string argv[])
 {
@@ -136,15 +138,8 @@ void add_pairs(void)
             {
                 pairs[pair_count].winner = i;
                 pairs[pair_count].loser = j;
-                printf("winner:%i loser:%i\n", pairs[pair_count].winner, pairs[pair_count].loser);
                 pair_count++;
             }
-            /*else if (preferences[i][j] < preferences[j][i])
-            {
-                pairs[pair_count].winner = j;
-                pairs[pair_count].loser = i;
-                pair_count++;
-            }*/
         }
     }
     return;
@@ -153,7 +148,24 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    // TODO
+    int scores[pair_count];
+    for (int i = 0; i < pair_count; i++)
+    {
+        scores[i] = pairs[i].winner-pairs[i].loser;
+    }
+    mergesort(scores, 0, pair_count-1);
+    for (int i = 0; i < pair_count; i++)
+    {
+        for (int j = 0; j < pair_count; j++)
+        {
+            if (scores[j] == pairs[i].winner-pairs[i].loser)
+            {
+                pair temp = pairs[i];
+                pairs[i] = pairs[j];
+                pairs[j] = temp;
+            }
+        }
+    }
     return;
 }
 
@@ -170,4 +182,42 @@ void print_winner(void)
     // TODO
     return;
 }
-
+void mergesort(int a[],int i,int j)
+{
+	int mid;
+		
+	if(i<j)
+	{
+		mid=(i+j)/2;
+		mergesort(a,i,mid);		//left recursion
+		mergesort(a,mid+1,j);	//right recursion
+		merge(a,i,mid,mid+1,j);	//merging of two sorted sub-arrays
+	}
+}
+ 
+void merge(int a[],int i1,int j1,int i2,int j2)
+{
+	int temp[50];	//array used for merging
+	int i,j,k;
+	i=i1;	//beginning of the first list
+	j=i2;	//beginning of the second list
+	k=0;
+	
+	while(i<=j1 && j<=j2)	//while elements in both lists
+	{
+		if(a[i]<a[j])
+			temp[k++]=a[i++];
+		else
+			temp[k++]=a[j++];
+	}
+	
+	while(i<=j1)	//copy remaining elements of the first list
+		temp[k++]=a[i++];
+		
+	while(j<=j2)	//copy remaining elements of the second list
+		temp[k++]=a[j++];
+		
+	//Transfer elements from temp[] back to a[]
+	for(i=i1,j=0;i<=j2;i++,j++)
+		a[i]=temp[j];
+}
