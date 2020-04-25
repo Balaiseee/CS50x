@@ -100,17 +100,6 @@ int main(int argc, string argv[])
 // Update ranks given a new vote
 bool vote(int rank, string name, int ranks[])
 {
-    // Check if name is unique
-    /*for (int i = 0; i < candidate_count; i++)
-    {
-        for (int j = 0; j < i; j++)
-        {
-            if (strcmp(candidates[i].name, candidates[j].name) == 0)
-            {
-                return false;
-            }
-        }
-    }*/
     // Check if name is valid
     for (int i = 0; i < candidate_count; i++)
     {
@@ -126,7 +115,13 @@ bool vote(int rank, string name, int ranks[])
 // Update preferences given one voter's ranks
 void record_preferences(int ranks[])
 {
-    // TODO
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = i+1; j < candidate_count; j++)
+        {
+            preferences[ranks[i]][ranks[j]] += 1;
+        }
+    }
     return;
 }
 
