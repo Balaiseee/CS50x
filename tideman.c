@@ -177,7 +177,8 @@ void sort_pairs(void)
 void lock_pairs(void)
 {
     int I = 1;
-    if(cyclic(pairs, pair_count, pair_count))
+    pair copy[] = pairs;
+    if(cyclic(copy, pair_count, pair_count))
     {
         pairs[pair_count-I].winner = 0;
         pairs[pair_count-I].loser = 0;
