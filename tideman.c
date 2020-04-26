@@ -182,7 +182,8 @@ void lock_pairs(void)
         locked[pairs[i].loser][pairs[i].winner] = false;
         if(isCyclic())
         {
-            printf("Is Cyclic");
+            locked[pairs[i].winner][pairs[i].loser] = false;
+            locked[pairs[i].loser][pairs[i].winner] = false;
         }
     }
     return;
