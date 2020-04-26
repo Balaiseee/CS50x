@@ -184,9 +184,8 @@ void lock_pairs(void)
     }
     while(isCyclic())
     {
-        locked[pairs[indexI].winner][pairs[indexI].loser] = false;
-        locked[pairs[indexI].loser][pairs[indexI].winner] = false;
-        //indexI--;
+        printf("Is Cyclic");
+        break;
     }
     return;
 }
