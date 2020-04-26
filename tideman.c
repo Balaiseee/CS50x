@@ -185,8 +185,8 @@ void lock_pairs(void)
     }
     if(cyclic(cop, pair_count, pair_count))
     {
-        pairs[pair_count-I].winner = 0;
-        pairs[pair_count-I].loser = 0;
+        //pairs[pair_count-I].winner = 0;
+        //pairs[pair_count-I].loser = 0;
     }
     else
     {
