@@ -1,6 +1,7 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 // Max number of candidates
 #define MAX 9
@@ -35,8 +36,9 @@ void lock_pairs(void);
 void print_winner(void);
 void mergesort(int a[], int i, int j);
 void merge(int a[], int i1, int j1, int i2, int j2);
-bool isCyclic (void);
-bool isUnique (int arr[]);
+unsigned int cyclic(const pair *edges, unsigned int n, unsigned int order);
+static unsigned int cyclic_recursive(const pair *edges, unsigned int n, unsigned int *visited, unsigned int order, unsigned int vertex, unsigned int predecessor);
+
 
 int main(int argc, string argv[])
 {
@@ -174,17 +176,18 @@ void sort_pairs(void)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-    int indexI;
+    int I;
     for (int i = 0; i < pair_count; i++)
     {
         locked[i][i] = false;
         locked[pairs[i].winner][pairs[i].loser] = true;
         locked[pairs[i].loser][pairs[i].winner] = false;
-        if(isCyclic())
-        {
-            locked[pairs[i].winner][pairs[i].loser] = false;
-            locked[pairs[i].loser][pairs[i].winner] = false;
-        }
+        I = i;
+    }
+    if (cyclic(pairs, pair_count, pair_count))
+    {
+        locked[pairs[I].winner][pairs[I].loser] = false;
+        locked[pairs[I].loser][pairs[I].winner] = false;   
     }
     return;
 }
@@ -243,43 +246,38 @@ void merge(int a[], int i1, int j1, int i2, int j2)
         a[i] = temp[j];
     }
 }
-
-bool isCyclic (void)
+ 
+static unsigned int cyclic_recursive(const pair *edges, unsigned int n, unsigned int *visited, unsigned int order, unsigned int vertex, unsigned int predecessor)
 {
-    int visited[pair_count+1];
-    visited[0] = 0;
-    int count = 1;
-    for (int i = 0; i < pair_count; i++)
-    {
-        for (int j = 0; j < pair_count; j++)
-        {
-            if (locked[i][j] == true)
-            {
-                visited[count] += j;
-                if (!isUnique(visited))
-                {
-                    return true;
-                }
-                count++;
-                i = j;
-                j = 0;
+    unsigned int i;
+    unsigned int cycle_found = 0;
+    visited[vertex] = 1;
+    for (i = 0; i < n && !cycle_found; i++) {
+        if (edges[i].winner == vertex || edges[i].loser == vertex) {
+            /* Adjacent */
+            const unsigned int neighbour = edges[i].winner == vertex ?
+                    edges[i].loser : edges[i].winner;
+            if (visited[neighbour] == 0) {
+                /* Not yet visited */
+                cycle_found = cyclic_recursive(edges, n, visited, order, neighbour, vertex);
+            }
+            else if (neighbour != predecessor) {
+                /* Found a cycle */
+                cycle_found = 1;
             }
         }
     }
-    return false;
+    return cycle_found;
 }
-
-bool isUnique (int arr[])
+ 
+unsigned int cyclic(const pair *edges, unsigned int n, unsigned int order)
 {
-    for (int i = 0; i < pair_count; i++)
-    {
-        for (int j = 0; j < pair_count; j++)
-        {
-            if (arr[i] == arr[j])
-            {
-                return false;
-            }
-        }
+    unsigned int *visited = calloc(order, sizeof(unsigned int));
+    unsigned int cycle_found;
+    if (visited == NULL) {
+        return 0;
     }
-    return true;
+    cycle_found  = cyclic_recursive(edges, n, visited, order, 0, 0);
+    free(visited);
+    return cycle_found;
 }
