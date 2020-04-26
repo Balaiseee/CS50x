@@ -179,8 +179,8 @@ void lock_pairs(void)
     int I = 1;
     while(cyclic(pairs, pair_count, pair_count))
     {
-        pairs[pair_count-I].winner = 0;
-        pairs[pair_count-I].loser = 0;
+        pairs[I].winner = 0;
+        pairs[I].loser = 0;
         I++;
     }
     for (int i = 0; i < pair_count; i++)
