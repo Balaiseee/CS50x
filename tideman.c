@@ -35,6 +35,8 @@ void lock_pairs(void);
 void print_winner(void);
 void mergesort(int a[], int i, int j);
 void merge(int a[], int i1, int j1, int i2, int j2);
+bool isCyclic (void);
+bool isUnique (int arr[]);
 
 int main(int argc, string argv[])
 {
@@ -269,9 +271,9 @@ bool isCyclic (void)
 
 bool isUnique (int arr[])
 {
-    for (int i = 0; i < sizeof(arr); i++)
+    for (int i = 0; i < pair_count; i++)
     {
-        for (int j = 0; j < sizeof(arr); j++)
+        for (int j = 0; j < pair_count; j++)
         {
             if (arr[i] == arr[j])
             {
