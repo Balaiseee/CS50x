@@ -176,14 +176,16 @@ void lock_pairs(void)
 {
     for (int i = 0; i < pair_count; i++)
     {
-        locked[i][i] = false;
-        locked[pairs[i].winner][pairs[i].loser] = true;
-        locked[pairs[i].loser][pairs[i].winner] = false;
-        if (isCyclic())
+        if (!isCyclic())
         {
-            locked[pairs[i].winner][pairs[i].loser] = false;
+            locked[i][i] = false;
+            locked[pairs[i].winner][pairs[i].loser] = true;
             locked[pairs[i].loser][pairs[i].winner] = false;
-            break;
+        }
+        else
+        {
+            locked[pairs[i-1].winner][pairs[i-1].loser] = false;
+            locked[pairs[i-1].loser][pairs[i-1].winner] = false;
         }
     }
     return;
