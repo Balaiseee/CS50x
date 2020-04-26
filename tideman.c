@@ -180,12 +180,10 @@ void lock_pairs(void)
         locked[i][i] = false;
         locked[pairs[i].winner][pairs[i].loser] = true;
         locked[pairs[i].loser][pairs[i].winner] = false;
-        indexI = i;
-    }
-    while(isCyclic())
-    {
-        printf("Is Cyclic");
-        break;
+        if(isCyclic())
+        {
+            printf("Is Cyclic");
+        }
     }
     return;
 }
