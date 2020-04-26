@@ -177,8 +177,13 @@ void sort_pairs(void)
 void lock_pairs(void)
 {
     int I = 1;
-    pair copy[] = pairs;
-    if(cyclic(copy, pair_count, pair_count))
+    pair cop[MAX * (MAX - 1) / 2];
+    for (int i = 0; i < pair_count; i++)
+    {
+        cop[i].winner = pairs[i].winner;
+        cop[i].loser = pairs[i].loser;        
+    }
+    if(cyclic(cop, pair_count, pair_count))
     {
         pairs[pair_count-I].winner = 0;
         pairs[pair_count-I].loser = 0;
@@ -188,7 +193,6 @@ void lock_pairs(void)
         locked[i][i] = false;
         locked[pairs[i].winner][pairs[i].loser] = true;
         locked[pairs[i].loser][pairs[i].winner] = false;
-        I = i;
     }
     return;
 }
