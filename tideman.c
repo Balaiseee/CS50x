@@ -172,12 +172,18 @@ void sort_pairs(void)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-    /*for (int i = 0; i < pair_count; i++)
+    for (int i = 0; i < pair_count; i++)
     {
         locked[i][i] = false;
         locked[pairs[i].winner][pairs[i].loser] = true;
         locked[pairs[i].loser][pairs[i].winner] = false;
-    }*/
+        if (isCyclic())
+        {
+            locked[pairs[i].winner][pairs[i].loser] = false;
+            locked[pairs[i].loser][pairs[i].winner] = false;
+            break;
+        }
+    }
     return;
 }
 
@@ -234,4 +240,44 @@ void merge(int a[], int i1, int j1, int i2, int j2)
     {
         a[i] = temp[j];
     }
+}
+
+bool isCyclic (void)
+{
+    int visited[pair_count+1];
+    visited[0] = 0;
+    int count = 1;
+    for (int i = 0; i < pair_count; i++)
+    {
+        for (int j = 0; j < pair_count; j++)
+        {
+            if (locked[i][j] == true)
+            {
+                visited[count] += j;
+                if (!isUnique(visited))
+                {
+                    return false;
+                }
+                count++;
+                i = j;
+                j = 0;
+            }
+        }
+    }
+    return true;
+}
+
+bool isUnique (int arr[])
+{
+    for (int i = 0; i < sizeof(arr); i++)
+    {
+        for (int j = 0; j < sizeof(arr); j++)
+        {
+            if (arr[i] == arr[j])
+            {
+                return false;
+            }
+        }
+    }
+    return true;
 }
