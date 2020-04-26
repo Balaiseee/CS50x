@@ -174,18 +174,9 @@ void lock_pairs(void)
 {
     for (int i = 0; i < pair_count; i++)
     {
-        for (int j = 0; j < pair_count; j++)
-        {
-            if (i == j)
-            {
-                locked[i][j] = false;
-            }
-            else
-            {
-                locked[pairs[i].winner][pairs[i].loser] = true;
-                locked[pairs[i].loser][pairs[i].winner] = false;
-            }
-        }
+        locked[i][i] = false;
+        locked[pairs[i].winner][pairs[i].loser] = true;
+        locked[pairs[i].loser][pairs[i].winner] = false;
     }
     return;
 }
