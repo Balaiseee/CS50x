@@ -184,11 +184,10 @@ void lock_pairs(void)
         locked[pairs[i].loser][pairs[i].winner] = false;
         I = i;
     }
-    while(cyclic(pairs, pair_count, pair_count))
+    if(cyclic(pairs, pair_count, pair_count))
     {
         locked[pairs[I].winner][pairs[I].loser] = false;
-        locked[pairs[I].loser][pairs[I].winner] = false;   
-        I--;
+        locked[pairs[I].loser][pairs[I].winner] = false;
     }
     return;
 }
