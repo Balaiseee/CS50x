@@ -187,8 +187,8 @@ void lock_pairs(void)
     }
     while(count_winner == count_loser)
     {
-        pairs[pair_count-1].winner = 0;
-        pairs[pair_count-1].loser = 0;
+        pairs[pair_count-I].winner = 0;
+        pairs[pair_count-I].loser = 0;
         count_winner -= pairs[I].winner;
         count_loser -= pairs[I].loser;
         I--;
