@@ -204,6 +204,7 @@ void print_winner(void)
                 break;
             }
             winner = j;
+            break;
         }
     }
     printf("%s\n", candidates[winner]);
