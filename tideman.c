@@ -193,16 +193,25 @@ void lock_pairs(void)
 void print_winner(void)
 {
     int I = 0;
+    int count[pair_count];
     for (int i = 0; i < pair_count; i++)
     {
         for (int j = 0; j < pair_count; j++)
         {
             if(locked[j][i] == true)
             {
-                break;
+                count[i]++;
             }
         }
-        I = i;
+    }
+    int min = INT_MAX;
+    for (int i = 0; i < pair_count; i++)
+    {
+        if (min > count[i])
+        {
+            min = count[i];
+            I = i;
+        }
     }
     printf("%s\n", candidates[I]);
     return;
