@@ -176,10 +176,19 @@ void sort_pairs(void)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
+    for (int i = 0; i < pair_count; i++)
+    {
+        printf("paris[%i].winner = %i\n", i, pairs[i].winner);
+        printf("paris[%i].loser = %i\n", i, pairs[i].loser);
+    }
     if(cyclic(pairs, pair_count, pair_count))
     {
-        pairs[pair_count-1].winner = 0;
-        pairs[pair_count-1].loser = 0;
+        /*pairs[pair_count-1].winner = 0;
+        pairs[pair_count-1].loser = 0;*/
+        printf("test");
+    } else
+    {
+        printf("no test");
     }
     for (int i = 0; i < pair_count; i++)
     {
