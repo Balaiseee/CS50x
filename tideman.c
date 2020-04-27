@@ -200,13 +200,13 @@ void print_winner(void)
             if (locked[j][i] == true)
             {
                 i++;
-                j=0;
+                j = 0;
                 break;
             }
-            winner=j;
+            winner = j;
         }
     }
-    printf("%s",candidates[winner]);
+    printf("%s\n", candidates[winner]);
     return;
 }
 
