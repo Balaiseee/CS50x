@@ -224,7 +224,7 @@ void print_winner(void)
         if (min > count[i] && I > i)
         {
             min = count[i];
-            I = i;
+            I = pairs[i].winner;
         }
     }
     printf("%s\n", candidates[I]);
