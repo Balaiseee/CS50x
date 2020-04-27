@@ -207,7 +207,7 @@ void print_winner(void)
     int min = INT_MAX;
     for (int i = 0; i < pair_count; i++)
     {
-        if (min > count[i])
+        if (min >= count[i])
         {
             min = count[i];
             I = i;
