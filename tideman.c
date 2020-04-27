@@ -206,28 +206,37 @@ void print_winner(void)
     }
 
     printf("%s\n", candidates[I]);*/
-    int I = 0;
     int count[pair_count];
+    bool winner[pair_count];
     for (int i = 0; i < pair_count; i++)
     {
         for (int j = 0; j < pair_count; j++)
         {
-            if(locked[j][pairs[i].winner] == true)
+            if(locked[j][i] == true)
             {
                 count[i]++;
             }
         }
     }
-    int min = INT_MAX;
     for (int i = 0; i < pair_count; i++)
     {
-        if (min > count[i] && I > pairs[i].winner)
+        if (count[i] == 0)
         {
-            min = count[i];
-            I = pairs[i].winner;
+            winner[i] = true;
+        } else
+        {
+            winner[i] = false;
         }
     }
-    printf("%s\n", candidates[I]);
+    for (int i = 0; i < pair_count; i++)
+    {
+        //printf("winner[%i] = %i\n", i, winner[i]);
+        if(winner[pairs[i].winner] == true)
+        {
+            printf("%s\n", candidates[pairs[i].winner]);
+            return;
+        }
+    }
     return;
 }
 
