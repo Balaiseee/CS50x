@@ -203,6 +203,7 @@ void print_winner(void)
                 break;
             }
             I = i;
+            break;
         }
     }
     printf("%s\n", candidates[I]);
