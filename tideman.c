@@ -177,7 +177,7 @@ void sort_pairs(void)
 void lock_pairs(void)
 {
     int count_winner = 0, count_loser = 0;
-    for (int i = 0; i < pair_count; i++)
+    /*for (int i = 0; i < pair_count; i++)
     {
         count_winner += pairs[i].winner;
         count_loser += pairs[i].loser;
@@ -188,9 +188,16 @@ void lock_pairs(void)
     {
         pairs[pair_count-1].winner = 0;
         pairs[pair_count-1].loser = 0;
-    }
+    }*/
     for (int i = 0; i < pair_count; i++)
     {
+        count_winner += pairs[i].winner;
+        count_loser += pairs[i].loser;
+        if(count_winner == count_loser)
+        {
+            pairs[i].winner = 0;
+            pairs[i].loser = 0;
+        }
         locked[i][i] = false;
         locked[pairs[i].winner][pairs[i].loser] = true;
         locked[pairs[i].loser][pairs[i].winner] = false;
