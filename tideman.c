@@ -227,7 +227,7 @@ void print_winner(void)
         if (count[i] == 0)
         {
             winner[i] = true;
-            printf("%s\n", candidates[winner[i]);
+            printf("%s\n", candidates[winner[i]]);
             return;
         } else
         {
