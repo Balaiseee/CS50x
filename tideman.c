@@ -36,9 +36,6 @@ void lock_pairs(void);
 void print_winner(void);
 void mergesort(int a[], int i, int j);
 void merge(int a[], int i1, int j1, int i2, int j2);
-unsigned int cyclic(const pair *edges, unsigned int n, unsigned int order);
-static unsigned int cyclic_recursive(const pair *edges, unsigned int n, unsigned int *visited, unsigned int order, unsigned int vertex, unsigned int predecessor);
-
 
 int main(int argc, string argv[])
 {
@@ -177,18 +174,6 @@ void sort_pairs(void)
 void lock_pairs(void)
 {
     int count_winner = 0, count_loser = 0;
-    /*for (int i = 0; i < pair_count; i++)
-    {
-        count_winner += pairs[i].winner;
-        count_loser += pairs[i].loser;
-        //printf("paris[%i].winner = %i\n", i, pairs[i].winner);
-        //printf("paris[%i].loser = %i\n", i, pairs[i].loser);
-    }
-    if(count_winner == count_loser)
-    {
-        pairs[pair_count-1].winner = 0;
-        pairs[pair_count-1].loser = 0;
-    }*/
     for (int i = 0; i < pair_count; i++)
     {
         count_winner += pairs[i].winner;
@@ -258,39 +243,4 @@ void merge(int a[], int i1, int j1, int i2, int j2)
     {
         a[i] = temp[j];
     }
-}
- 
-static unsigned int cyclic_recursive(const pair *edges, unsigned int n, unsigned int *visited, unsigned int order, unsigned int vertex, unsigned int predecessor)
-{
-    unsigned int i;
-    unsigned int cycle_found = 0;
-    visited[vertex] = 1;
-    for (i = 0; i < n && !cycle_found; i++) {
-        if (edges[i].winner == vertex || edges[i].loser == vertex) {
-            /* Adjacent */
-            const unsigned int neighbour = edges[i].winner == vertex ?
-                    edges[i].loser : edges[i].winner;
-            if (visited[neighbour] == 0) {
-                /* Not yet visited */
-                cycle_found = cyclic_recursive(edges, n, visited, order, neighbour, vertex);
-            }
-            else if (neighbour != predecessor) {
-                /* Found a cycle */
-                cycle_found = 1;
-            }
-        }
-    }
-    return cycle_found;
-}
- 
-unsigned int cyclic(const pair *edges, unsigned int n, unsigned int order)
-{
-    unsigned int *visited = calloc(order, sizeof(unsigned int));
-    unsigned int cycle_found;
-    if (visited == NULL) {
-        return 0;
-    }
-    cycle_found  = cyclic_recursive(edges, n, visited, order, 0, 0);
-    free(visited);
-    return cycle_found;
 }
