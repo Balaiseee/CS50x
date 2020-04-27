@@ -190,7 +190,7 @@ void lock_pairs(void)
         pairs[pair_count-1].winner = 0;
         pairs[pair_count-1].loser = 0;
         count_winner -= pairs[I].winner;
-        count_loser += pairs[I].loser;
+        count_loser -= pairs[I].loser;
         I--;
         
     }
