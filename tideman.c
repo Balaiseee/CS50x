@@ -203,9 +203,7 @@ void print_winner(void)
                 j = 0;
                 break;
             }
-            winner = j;
-            printf("%s\n", candidates[winner]);
-            return;
+            winner = i;
         }
     }
     printf("%s\n", candidates[winner]);
