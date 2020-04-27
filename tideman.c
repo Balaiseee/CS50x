@@ -206,7 +206,7 @@ void print_winner(void)
     }
 
     printf("%s\n", candidates[I]);*/
-    int I = INT_MAX;
+    int I = 0;
     int count[pair_count];
     for (int i = 0; i < pair_count; i++)
     {
@@ -221,7 +221,7 @@ void print_winner(void)
     int min = INT_MAX;
     for (int i = 0; i < pair_count; i++)
     {
-        if (min > count[i] && I > i)
+        if (min > count[i] && I > pairs[i].winner)
         {
             min = count[i];
             I = pairs[i].winner;
