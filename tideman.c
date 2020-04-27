@@ -210,6 +210,10 @@ void print_winner(void)
     bool winner[pair_count];
     for (int i = 0; i < pair_count; i++)
     {
+        count[i] = 0;
+    }
+    for (int i = 0; i < pair_count; i++)
+    {
         for (int j = 0; j < pair_count; j++)
         {
             if(locked[j][i] == true)
