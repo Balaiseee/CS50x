@@ -199,14 +199,13 @@ void print_winner(void)
         {
             if(locked[j][i] == true)
             {
-                i++;
                 break;
             }
-            printf("%s\n", candidates[i]);
-            return;
+            I = i;
         }
     }
-
+    printf("%s\n", candidates[I]);
+    return;
 }
 
 void mergesort(int a[], int i, int j)
