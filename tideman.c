@@ -176,7 +176,7 @@ void sort_pairs(void)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-    int count_winner = 0, count_loser = 0, I;
+    int count_winner = 0, count_loser = 0, I, count = 1;
     for (int i = 0; i < pair_count; i++)
     {
         count_winner += pairs[i].winner;
@@ -187,12 +187,12 @@ void lock_pairs(void)
     }
     while(count_winner == count_loser)
     {
-        pairs[pair_count-I].winner = 0;
-        pairs[pair_count-I].loser = 0;
+        pairs[pair_count-count].winner = 0;
+        pairs[pair_count-count].loser = 0;
         count_winner -= pairs[I].winner;
         count_loser -= pairs[I].loser;
         I--;
-        
+        count++;
     }
     for (int i = 0; i < pair_count; i++)
     {
