@@ -202,12 +202,11 @@ void print_winner(void)
                 i++;
                 break;
             }
-            I = i;
-            break;
+            printf("%s\n", candidates[i]);
+            return;
         }
     }
-    printf("%s\n", candidates[I]);
-    return;
+
 }
 
 void mergesort(int a[], int i, int j)
