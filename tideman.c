@@ -199,7 +199,7 @@ void print_winner(void)
         {
             if(locked[i][j] == true)
             {
-                continue;
+                i++;
             }
             winner = j;
         }
