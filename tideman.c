@@ -199,10 +199,10 @@ void print_winner(void)
         {
             if(locked[i][j] == true)
             {
-                i++;;
+                break;
             }
-            winner = j;
         }
+        winner = j;
     }
     printf("%s\n", candidates[winner]);
     return;
