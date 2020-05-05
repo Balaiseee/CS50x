@@ -193,13 +193,13 @@ void lock_pairs(void)
 void print_winner(void)
 {
     int winner = 0;
-    for (int i = 0; i < pair_count; i++)
+    for (int j = 0; j < pair_count; j++)
     {
-        for (int j = 0; j < pair_count; j++)
+        for (int i = 0; i < pair_count; i++)
         {
             if(locked[i][j] == true)
             {
-                i++;
+                i++;;
             }
             winner = j;
         }
