@@ -206,7 +206,7 @@ void lock_pairs(void)
 void print_winner(void)
 {
     int startIndex = 0;
-    A:for(int i = 0; i < pair_count; i++)
+    A:for(int i = 0; i < candidate_count; i++)
     {
         if( i != startIndex && locked[i][startIndex] == true)
         {
