@@ -205,21 +205,31 @@ void lock_pairs(void)
 // Print the winner of the election
 void print_winner(void)
 {
-    int startIndex = 0;
-    A:for(int i = 0; i < candidate_count; i++)
+    for (int i =0; i < candidate_count; i++)
     {
-        if( i != startIndex && locked[i][startIndex] == true)
+        bool indicator = false;
+
+        for (int j=0; j< candidate_count; j++)
         {
-            startIndex = i;
-            i = 0;
-            goto A;
+            if (locked[j][i] == true) // go onto next candidate check(i)
+            {
+                indicator = true;
+                break; //only stops the inner loop, the outer loop continues to go
+            }
         }
-        if( i != startIndex)
+
+        if (indicator == true)
         {
-           startIndex = i;
+            continue;
         }
+        
+        else if (indicator == false)
+        {
+        printf("%s\n",candidates[i]);
+        return;
+        }
+
     }
-    printf("%s\n", candidates[startIndex]);
     return;
 }
 
