@@ -150,6 +150,8 @@ void add_pairs(void)
 void sort_pairs(void)
 {
     int scores[pair_count];
+    int c, end = pair_count - 1;
+    pair t;
     for (int i = 0; i < pair_count; i++)
     {
         scores[i] = pairs[i].winner - pairs[i].loser;
@@ -167,10 +169,17 @@ void sort_pairs(void)
             }
         }
     }
-    for (int i = 0; i < pair_count; i++)
+    for (c = 0; c < pair_count/2; c++)
+    {
+        t          = pairs[c];
+        pairs[c]   = pairs[end];
+        pairs[end] = t;
+        end--;
+    }
+    /*for (int i = 0; i < pair_count; i++)
     {
         printf("Pairs[%i] = (w:%i, l:%i)\n", i, pairs[i].winner, pairs[i].loser);
-    }
+    }*/
     return;
 }
 
