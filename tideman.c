@@ -201,9 +201,12 @@ void print_winner(void)
             startIndex = j;
             goto A;
         }
-        winner = j;
+        if( j != startIndex)
+        {
+           startIndex = j; 
+        }
     }
-    printf("%s\n", candidates[winner]);
+    printf("%s\n", candidates[startIndex]);
     return;
 }
 
