@@ -199,6 +199,7 @@ void print_winner(void)
         if( j != startIndex && locked[startIndex][j] == true)
         {
             startIndex = j;
+            j = 0;
             goto A;
         }
         if( j != startIndex)
