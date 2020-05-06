@@ -216,8 +216,7 @@ void print_winner(void)
         }
         if( i != startIndex)
         {
-           startIndex = i; 
-           break;
+           startIndex = i;
         }
     }
     printf("%s\n", candidates[startIndex]);
