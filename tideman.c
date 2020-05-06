@@ -167,6 +167,10 @@ void sort_pairs(void)
             }
         }
     }
+    for (int i = 0; i < pair_count; i++)
+    {
+        printf("Pairs[%i] = %s\n", i, pairs[i])
+    }
     return;
 }
 
