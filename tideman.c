@@ -193,17 +193,17 @@ void lock_pairs(void)
 void print_winner(void)
 {
     int startIndex = 0;
-    A:for(int j = 0; j < pair_count; j++)
+    A:for(int i = 0; i < pair_count; i++)
     {
-        if( j != startIndex && locked[startIndex][j] == true)
+        if( i != startIndex && locked[i][startIndex] == true)
         {
-            startIndex = j;
-            j = 0;
+            startIndex = i;
+            i = 0;
             goto A;
         }
-        if( j != startIndex)
+        if( i != startIndex)
         {
-           startIndex = j; 
+           startIndex = i; 
         }
     }
     printf("%s\n", candidates[startIndex]);
