@@ -1,6 +1,6 @@
 #include "helpers.h"
 
-BYTE average(RGBTRIPLE pixel)
+RGBTRIPLE average(RGBTRIPLE pixel)
 {
     BYTE average = (pixel.rgbtRed + pixel.rgbtGreen + pixel.rgbtBlue) / 3;
     RGBTRIPLE result;
