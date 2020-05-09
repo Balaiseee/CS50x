@@ -18,9 +18,17 @@ void grayscale(int height, int width, RGBTRIPLE pixel[height][width])
 }
 
 // Convert image to sepia
-void sepia(int height, int width, RGBTRIPLE image[height][width])
+void sepia(int height, int width, RGBTRIPLE pixel[height][width])
 {
-    return;
+    for (int i = 0; i < height; i++)
+    {
+        for(int j = 0; j < width; j++)
+        {
+            pixel[i][j].rgbtRed = .393 * pixel[i][j].rgbtRed + .769 * pixel[i][j].rgbtGreen + .189 * pixel[i][j].rgbtBlue;
+            pixel[i][j].rgbtGreen = .349 * pixel[i][j].rgbtRed + .686 * pixel[i][j].rgbtGreen + .168 * pixel[i][j].rgbtBlue;
+            pixel[i][j].rgbtBlue = .272 * pixel[i][j].rgbtRed + .534 * pixel[i][j].rgbtGreen + .131 * pixel[i][j].rgbtBlue;
+        }
+    }
 }
 
 // Reflect image horizontally
