@@ -3,7 +3,7 @@
 
 RGBTRIPLE average(RGBTRIPLE pixel)
 {
-    BYTE average = (pixel.rgbtRed + pixel.rgbtGreen + pixel.rgbtBlue) / 3;
+    BYTE average = ceil((pixel.rgbtRed + pixel.rgbtGreen + pixel.rgbtBlue) / 3);
     RGBTRIPLE result;
     result.rgbtRed = average;
     result.rgbtGreen = average;
