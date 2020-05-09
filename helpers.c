@@ -8,7 +8,7 @@ void grayscale(int height, int width, RGBTRIPLE pixel[height][width])
     {
         for(int j = 0; j < width; j++)
         {
-            BYTE average = round((float)(pixel[i][j].rgbtRed + pixel[i][j].rgbtGreen + pixel[i][j].rgbtBlue) / 3);
+            BYTE average = (float)(pixel[i][j].rgbtRed + pixel[i][j].rgbtGreen + pixel[i][j].rgbtBlue) / 3;
             pixel[i][j].rgbtRed = average;
             pixel[i][j].rgbtGreen = average;
             pixel[i][j].rgbtBlue = average;
