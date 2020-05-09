@@ -44,7 +44,7 @@ void sepia(int height, int width, RGBTRIPLE pixel[height][width])
             }
             else
             {
-                sepiaGreen = round((float)(.272 * originalRed + .534 * originalGreen + .131 * originalBlue));
+                sepiaGreen = round((float)(.349 * originalRed + .686 * originalGreen + .168 * originalBlue));
             }
             if (round((float)(.272 * originalRed + .534 * originalGreen + .131 * originalBlue)) > 255)
             {
