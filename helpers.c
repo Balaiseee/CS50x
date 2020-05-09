@@ -27,9 +27,26 @@ void sepia(int height, int width, RGBTRIPLE pixel[height][width])
             BYTE originalRed = pixel[i][j].rgbtRed;
             BYTE originalGreen = pixel[i][j].rgbtGreen;
             BYTE originalBlue = pixel[i][j].rgbtBlue;
-            pixel[i][j].rgbtRed = round((float)(.393 * originalRed + .769 * originalGreen + .189 * originalBlue));
-            pixel[i][j].rgbtGreen = round((float)(.349 * originalRed + .686 * originalGreen + .168 * originalBlue));
-            pixel[i][j].rgbtBlue = round((float)(.272 * originalRed + .534 * originalGreen + .131 * originalBlue));
+            BYTE sepiaRed = round((float)(.393 * originalRed + .769 * originalGreen + .189 * originalBlue));
+            BYTE sepiaGreen = round((float)(.349 * originalRed + .686 * originalGreen + .168 * originalBlue));
+            BYTE sepiaBlue = round((float)(.272 * originalRed + .534 * originalGreen + .131 * originalBlue));
+            if (sepiaRed > 255)
+            {
+                pixel[i][j].rgbtRed = 255;
+            }
+            else
+            {
+                pixel[i][j].rgbtRed = sepiaRed;
+            }
+            if (sepiaGreen > 255)
+            {
+                pixel[i][j].rgbtGreen = 255;
+            }
+            else
+            {
+                pixel[i][j].rgbtGreen = sepiaGreen;
+            }
+            
         }
     }
 }
