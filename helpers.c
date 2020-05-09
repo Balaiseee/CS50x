@@ -2,7 +2,7 @@
 
 BYTE average(RGBTRIPLE pixel)
 {
-    return (pixel.rgbtRed + pixel.rgbtGreen + pixel.rgbtBlue) / 3
+    return (pixel.rgbtRed + pixel.rgbtGreen + pixel.rgbtBlue) / 3;
 }
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE pixel[height][width])
