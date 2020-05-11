@@ -74,7 +74,6 @@ void reflect(int height, int width, RGBTRIPLE pixels[height][width])
             RGBTRIPLE temp = pixels[i][j];
             pixels[i][j] = pixels[i][width - 1 - j];
             pixels[i][width - 1 - j] = temp;
-
         }
     }
     return;
@@ -86,7 +85,6 @@ void blur(int height, int width, RGBTRIPLE pixels[height][width])
     int h = height;
     int w = width;
     RGBTRIPLE copy[h][w];
-    
     //Copy pixels into "copy"
     for (int i = 0; i < h; i++)
     {
@@ -95,7 +93,6 @@ void blur(int height, int width, RGBTRIPLE pixels[height][width])
             copy[i][j] = pixels[i][j];
         }
     }
-
     for (int i = 0; i < h; i++)//Browse the pixel matrix
     {
         for (int j = 0; j < w; j++)
@@ -104,19 +101,16 @@ void blur(int height, int width, RGBTRIPLE pixels[height][width])
             float Green = 0;
             float Blue = 0;
             int count = 0;
-
             for (int a = -1; a < 2; a++)//Look at the contiguous pixels
             {
                 for (int s = -1; s < 2; s++)
                 {
                     int x = i + a;
                     int y = j + s;
-
                     if (x < 0 || y < 0 || x == h || y == w) //If it's an edge or a corner avoids indexes out of the bound
                     {
                         continue;
                     }
-
                     Red += pixels[x][y].rgbtRed;
                     Green += pixels[x][y].rgbtGreen;
                     Blue += pixels[x][y].rgbtBlue;
@@ -127,12 +121,10 @@ void blur(int height, int width, RGBTRIPLE pixels[height][width])
             float RedAverage = round(Red / count);
             float GreenAverage = round(Green / count);
             float BlueAverage = round(Blue / count);
-            
             //Assign them to our "copy" pixel matrix
             copy[i][j].rgbtRed = RedAverage;
             copy[i][j].rgbtGreen = GreenAverage;
             copy[i][j].rgbtBlue = BlueAverage;
-
         }
     }
     //Assigns our pixel matrix the "copy" values
@@ -143,6 +135,5 @@ void blur(int height, int width, RGBTRIPLE pixels[height][width])
             pixels[i][j] = copy[i][j];
         }
     }
-
     return;
 }
