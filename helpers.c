@@ -88,15 +88,15 @@ void blur(int height, int width, RGBTRIPLE pixel[height][width])
             average.rgbtRed = round((float)(pixel[i-1][j-1].rgbtRed+pixel[i-1][j].rgbtRed+pixel[i-1][j+1].rgbtRed+pixel[i][j-1].rgbtRed+pixel[i][j].rgbtRed+pixel[i][j+1].rgbtRed+pixel[i+1][j-1].rgbtRed+pixel[i+1][j].rgbtRed+pixel[i+1][j+1].rgbtRed)/9);
             average.rgbtGreen = round((float)(pixel[i-1][j-1].rgbtGreen+pixel[i-1][j].rgbtGreen+pixel[i-1][j+1].rgbtGreen+pixel[i][j-1].rgbtGreen+pixel[i][j].rgbtGreen+pixel[i][j+1].rgbtGreen+pixel[i+1][j-1].rgbtGreen+pixel[i+1][j].rgbtGreen+pixel[i+1][j+1].rgbtGreen)/9);
             average.rgbtBlue = round((float)(pixel[i-1][j-1].rgbtBlue+pixel[i-1][j].rgbtBlue+pixel[i-1][j+1].rgbtBlue+pixel[i][j-1].rgbtBlue+pixel[i][j].rgbtBlue+pixel[i][j+1].rgbtBlue+pixel[i+1][j-1].rgbtBlue+pixel[i+1][j].rgbtBlue+pixel[i+1][j+1].rgbtBlue)/9);
-            pixel[i-1][j-1] = average;
-            pixel[i-1][j]   = average;
-            pixel[i-1][j+1] = average;
-            pixel[i][j-1]   = average;
+            //pixel[i-1][j-1] = average;
+            //pixel[i-1][j]   = average;
+            //pixel[i-1][j+1] = average;
+            //pixel[i][j-1]   = average;
             pixel[i][j]     = average;
-            pixel[i][j+1]   = average;
-            pixel[i+1][j-1] = average;
-            pixel[i+1][j]   = average;
-            pixel[i+1][j+1] = average;
+            //pixel[i][j+1]   = average;
+            //pixel[i+1][j-1] = average;
+            //pixel[i+1][j]   = average;
+            //pixel[i+1][j+1] = average;
         }
     }
     return;
