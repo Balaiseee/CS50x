@@ -82,13 +82,14 @@ void blur(int height, int width, RGBTRIPLE pixels[height][width])
 {
     int h = height;
     int w = width;
-    RGBTRIPLE copyimage[height][width];
-    // copy image
+    RGBTRIPLE copy[h][w];
+    
+    // copy pixels
     for (int i = 0; i < h; i++)
     {
         for (int j = 0; j < w; j++)
         {
-            copyimage[i][j] = pixels[i][j];
+            copy[i][j] = pixels[i][j];
         }
     }
 
@@ -124,9 +125,9 @@ void blur(int height, int width, RGBTRIPLE pixels[height][width])
             float GreenAverage = round(Green / count);
             float BlueAverage = round(Blue / count);
 
-            copyimage[i][j].rgbtRed = RedAverage;
-            copyimage[i][j].rgbtGreen = GreenAverage;
-            copyimage[i][j].rgbtBlue = BlueAverage;
+            copy[i][j].rgbtRed = RedAverage;
+            copy[i][j].rgbtGreen = GreenAverage;
+            copy[i][j].rgbtBlue = BlueAverage;
 
         }
     }
@@ -135,7 +136,7 @@ void blur(int height, int width, RGBTRIPLE pixels[height][width])
     {
         for (int j = 0; j < w; j++) // loop throug colums within the row
         {
-            pixels[i][j] = copyimage[i][j];
+            pixels[i][j] = copy[i][j];
         }
     }
 
