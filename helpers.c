@@ -94,7 +94,7 @@ void blur(int height, int width, RGBTRIPLE pixel[height][width])
                 temp[i][j]     = average;
                 continue; 
             }
-            else if (i == height-1 && j != 0 && j != width-1)//bot
+            if (i == height-1 && j != 0 && j != width-1)//bot
             {
                 average.rgbtRed = round((float)(pixel[i-1][j-1].rgbtRed+pixel[i-1][j].rgbtRed+pixel[i-1][j+1].rgbtRed+pixel[i][j-1].rgbtRed+pixel[i][j].rgbtRed+pixel[i][j+1].rgbtRed)/6);
                 average.rgbtGreen = round((float)(pixel[i-1][j-1].rgbtGreen+pixel[i-1][j].rgbtGreen+pixel[i-1][j+1].rgbtGreen+pixel[i][j-1].rgbtGreen+pixel[i][j].rgbtGreen+pixel[i][j+1].rgbtGreen)/6);
@@ -102,7 +102,7 @@ void blur(int height, int width, RGBTRIPLE pixel[height][width])
                 temp[i][j]     = average;
                 continue;    
             }
-            else if (i != 0 && i != height-1 && j == 0)//left
+            if (i != 0 && i != height-1 && j == 0)//left
             {
                 average.rgbtRed = round((float)(pixel[i-1][j].rgbtRed+pixel[i-1][j+1].rgbtRed+pixel[i][j].rgbtRed+pixel[i][j+1].rgbtRed+pixel[i+1][j].rgbtRed+pixel[i+1][j+1].rgbtRed)/6);
                 average.rgbtGreen = round((float)(pixel[i-1][j].rgbtGreen+pixel[i-1][j+1].rgbtGreen+pixel[i][j].rgbtGreen+pixel[i][j+1].rgbtGreen+pixel[i+1][j].rgbtGreen+pixel[i+1][j+1].rgbtGreen)/6);
@@ -110,7 +110,7 @@ void blur(int height, int width, RGBTRIPLE pixel[height][width])
                 temp[i][j]     = average;
                 continue;
             }
-            else if (i != 0 && i != height-1 && j == width-1)//rigth
+            if (i != 0 && i != height-1 && j == width-1)//rigth
             {
                 average.rgbtRed = round((float)(pixel[i-1][j-1].rgbtRed+pixel[i-1][j].rgbtRed+pixel[i][j-1].rgbtRed+pixel[i][j].rgbtRed+pixel[i+1][j-1].rgbtRed+pixel[i+1][j].rgbtRed)/6);
                 average.rgbtGreen = round((float)(pixel[i-1][j-1].rgbtGreen+pixel[i-1][j].rgbtGreen+pixel[i][j-1].rgbtGreen+pixel[i][j].rgbtGreen+pixel[i+1][j-1].rgbtGreen+pixel[i+1][j].rgbtGreen)/6);
