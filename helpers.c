@@ -2,31 +2,31 @@
 #include <math.h>
 
 // Convert image to grayscale
-void grayscale(int height, int width, RGBTRIPLE pixel[height][width])
+void grayscale(int height, int width, RGBTRIPLE pixels[height][width])
 {
     for (int i = 0; i < height; i++)
     {
         for(int j = 0; j < width; j++)
         {
-            BYTE average = round((float)(pixel[i][j].rgbtRed + pixel[i][j].rgbtGreen + pixel[i][j].rgbtBlue) / 3);
-            pixel[i][j].rgbtRed = average;
-            pixel[i][j].rgbtGreen = average;
-            pixel[i][j].rgbtBlue = average;
+            BYTE average = round((float)(pixels[i][j].rgbtRed + pixels[i][j].rgbtGreen + pixels[i][j].rgbtBlue) / 3);
+            pixels[i][j].rgbtRed = average;
+            pixels[i][j].rgbtGreen = average;
+            pixels[i][j].rgbtBlue = average;
         }
     }
     return;
 }
 
 // Convert image to sepia
-void sepia(int height, int width, RGBTRIPLE pixel[height][width])
+void sepia(int height, int width, RGBTRIPLE pixels[height][width])
 {
     for (int i = 0; i < height; i++)
     {
         for(int j = 0; j < width; j++)
         {
-            BYTE originalRed = pixel[i][j].rgbtRed;
-            BYTE originalGreen = pixel[i][j].rgbtGreen;
-            BYTE originalBlue = pixel[i][j].rgbtBlue;
+            BYTE originalRed = pixels[i][j].rgbtRed;
+            BYTE originalGreen = pixels[i][j].rgbtGreen;
+            BYTE originalBlue = pixels[i][j].rgbtBlue;
             BYTE sepiaRed = 0;
             BYTE sepiaBlue = 0;
             BYTE sepiaGreen = 0;
@@ -54,23 +54,23 @@ void sepia(int height, int width, RGBTRIPLE pixel[height][width])
             {
                 sepiaBlue = round((float)(.272 * originalRed + .534 * originalGreen + .131 * originalBlue));
             }
-            pixel[i][j].rgbtRed = sepiaRed;
-            pixel[i][j].rgbtBlue = sepiaBlue;
-            pixel[i][j].rgbtGreen = sepiaGreen;
+            pixels[i][j].rgbtRed = sepiaRed;
+            pixels[i][j].rgbtBlue = sepiaBlue;
+            pixels[i][j].rgbtGreen = sepiaGreen;
         }
     }
 }
 
 // Reflect image horizontally
-void reflect(int height, int width, RGBTRIPLE pixel[height][width])
+void reflect(int height, int width, RGBTRIPLE pixels[height][width])
 {
     for (int i = 0; i < height; i++)
     {
         for(int j = 0; j < width/2; j++)
         {
-            RGBTRIPLE temp = pixel[i][j];
-            pixel[i][j] = pixel[i][width-1-j];
-            pixel[i][width-1-j] = temp;
+            RGBTRIPLE temp = pixels[i][j];
+            pixels[i][j] = pixels[i][width-1-j];
+            pixels[i][width-1-j] = temp;
 
         }
     }
@@ -78,55 +78,55 @@ void reflect(int height, int width, RGBTRIPLE pixel[height][width])
 }
 
 // Blur image
-void blur(int height, int width, RGBTRIPLE image[height][width])
+void blur(int height, int width, RGBTRIPLE pixels[height][width])
 {
     int h = height;
     int w = width;
     RGBTRIPLE copyimage[height][width];
     // copy image
-    for (int i = 0; i < h; i++) // loop through rows
+    for (int i = 0; i < h; i++)
     {
-        for (int j = 0; j < w; j++) // loop throug colums within the row
+        for (int j = 0; j < w; j++)
         {
-            copyimage[i][j] = image[i][j];
+            copyimage[i][j] = pixels[i][j];
         }
     }
 
-    for (int i = 0; i < h; i++) // loop through rows
+    for (int i = 0; i < h; i++)
     {
-        for (int j = 0; j < w; j++) // loop throug colums within the row
+        for (int j = 0; j < w; j++)
         {
-            float r = 0;
-            float g = 0;
-            float b = 0;
-            int c = 0;
+            float Red = 0;
+            float Green = 0;
+            float Blue = 0;
+            int count = 0;
 
-            for (int a = -1; a < 2; a++) // loop through neighbouring pixels
+            for (int a = -1; a < 2; a++) //Look at the contiguous pixelss
             {
                 for (int s = -1; s < 2; s++)
                 {
                     int x = i + a;
                     int y = j + s;
 
-                    if (x < 0 || y < 0 || x == h || y == w) // check if neighbouring pixels are out of bounds
+                    if (x < 0 || y < 0 || x == h || y == w)
                     {
                         continue;
                     }
 
-                    r += image[x][y].rgbtRed;
-                    g += image[x][y].rgbtGreen;
-                    b += image[x][y].rgbtBlue;
-                    c++;
+                    Red += pixels[x][y].rgbtRed;
+                    Green += pixels[x][y].rgbtGreen;
+                    Blue += pixels[x][y].rgbtBlue;
+                    count++;
                 }
             }
+            
+            float RedAverage = round(Red / count);
+            float GreenAverage = round(Green / count);
+            float BlueAverage = round(Blue / count);
 
-            float ravg = round(r / c);
-            float gavg = round(g / c);
-            float bavg = round(b / c);
-
-            copyimage[i][j].rgbtRed = ravg;
-            copyimage[i][j].rgbtGreen = gavg;
-            copyimage[i][j].rgbtBlue = bavg;
+            copyimage[i][j].rgbtRed = RedAverage;
+            copyimage[i][j].rgbtGreen = GreenAverage;
+            copyimage[i][j].rgbtBlue = BlueAverage;
 
         }
     }
@@ -135,7 +135,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < w; j++) // loop throug colums within the row
         {
-            image[i][j] = copyimage[i][j];
+            pixels[i][j] = copyimage[i][j];
         }
     }
 
