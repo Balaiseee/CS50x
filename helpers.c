@@ -92,7 +92,7 @@ void blur(int height, int width, RGBTRIPLE pixel[height][width])
                 average.rgbtGreen = round((float)(pixel[i][j-1].rgbtGreen+pixel[i][j].rgbtGreen+pixel[i][j+1].rgbtGreen+pixel[i+1][j-1].rgbtGreen+pixel[i+1][j].rgbtGreen+pixel[i+1][j+1].rgbtGreen)/6);
                 average.rgbtBlue = round((float)(pixel[i][j-1].rgbtBlue+pixel[i][j].rgbtBlue+pixel[i][j+1].rgbtBlue+pixel[i+1][j-1].rgbtBlue+pixel[i+1][j].rgbtBlue+pixel[i+1][j+1].rgbtBlue)/6);
                 pixel[i][j]     = average;
-                //continue; 
+                continue; 
             }
             else if (i == height-1 && j != 0 && j != width-1)//bot
             {
@@ -100,7 +100,7 @@ void blur(int height, int width, RGBTRIPLE pixel[height][width])
                 average.rgbtGreen = round((float)(pixel[i-1][j-1].rgbtGreen+pixel[i-1][j].rgbtGreen+pixel[i-1][j+1].rgbtGreen+pixel[i][j-1].rgbtGreen+pixel[i][j].rgbtGreen+pixel[i][j+1].rgbtGreen)/6);
                 average.rgbtBlue = round((float)(pixel[i-1][j-1].rgbtBlue+pixel[i-1][j].rgbtBlue+pixel[i-1][j+1].rgbtBlue+pixel[i][j-1].rgbtBlue+pixel[i][j].rgbtBlue+pixel[i][j+1].rgbtBlue)/6);
                 pixel[i][j]     = average;
-                //continue;    
+                continue;    
             }
             else if (i != 0 && i != height-1 && j == 0)//left
             {
@@ -108,7 +108,7 @@ void blur(int height, int width, RGBTRIPLE pixel[height][width])
                 average.rgbtGreen = round((float)(pixel[i-1][j].rgbtGreen+pixel[i-1][j+1].rgbtGreen+pixel[i][j].rgbtGreen+pixel[i][j+1].rgbtGreen+pixel[i+1][j].rgbtGreen+pixel[i+1][j+1].rgbtGreen)/6);
                 average.rgbtBlue = round((float)(pixel[i-1][j].rgbtBlue+pixel[i-1][j+1].rgbtBlue+pixel[i][j].rgbtBlue+pixel[i][j+1].rgbtBlue+pixel[i+1][j].rgbtBlue+pixel[i+1][j+1].rgbtBlue)/6);
                 pixel[i][j]     = average;
-                //continue;
+                continue;
             }
             else if (i != 0 && i != height-1 && j == width-1)//rigth
             {
@@ -116,7 +116,7 @@ void blur(int height, int width, RGBTRIPLE pixel[height][width])
                 average.rgbtGreen = round((float)(pixel[i-1][j-1].rgbtGreen+pixel[i-1][j].rgbtGreen+pixel[i][j-1].rgbtGreen+pixel[i][j].rgbtGreen+pixel[i+1][j-1].rgbtGreen+pixel[i+1][j].rgbtGreen)/6);
                 average.rgbtBlue = round((float)(pixel[i-1][j-1].rgbtBlue+pixel[i-1][j].rgbtBlue+pixel[i][j-1].rgbtBlue+pixel[i][j].rgbtBlue+pixel[i+1][j-1].rgbtBlue+pixel[i+1][j].rgbtBlue)/6);
                 pixel[i][j]     = average;
-                //continue;
+                continue;
             }
             else
             {
@@ -124,7 +124,7 @@ void blur(int height, int width, RGBTRIPLE pixel[height][width])
                 average.rgbtGreen = round((float)(pixel[i-1][j-1].rgbtGreen+pixel[i-1][j].rgbtGreen+pixel[i-1][j+1].rgbtGreen+pixel[i][j-1].rgbtGreen+pixel[i][j].rgbtGreen+pixel[i][j+1].rgbtGreen+pixel[i+1][j-1].rgbtGreen+pixel[i+1][j].rgbtGreen+pixel[i+1][j+1].rgbtGreen)/9);
                 average.rgbtBlue = round((float)(pixel[i-1][j-1].rgbtBlue+pixel[i-1][j].rgbtBlue+pixel[i-1][j+1].rgbtBlue+pixel[i][j-1].rgbtBlue+pixel[i][j].rgbtBlue+pixel[i][j+1].rgbtBlue+pixel[i+1][j-1].rgbtBlue+pixel[i+1][j].rgbtBlue+pixel[i+1][j+1].rgbtBlue)/9);
                 pixel[i][j]     = average;
-                //continue;
+                continue;
             }
             //corner detection
         }
