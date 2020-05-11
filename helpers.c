@@ -78,10 +78,19 @@ void reflect(int height, int width, RGBTRIPLE pixel[height][width])
 }
 
 // Blur image
-void blur(int height, int width, RGBTRIPLE pixel[height][width])
+void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     int h = height;
     int w = width;
+    RGBTRIPLE copyimage[height][width];
+    // copy image
+    for (int i = 0; i < h; i++) // loop through rows
+    {
+        for (int j = 0; j < w; j++) // loop throug colums within the row
+        {
+            copyimage[i][j] = image[i][j];
+        }
+    }
 
     for (int i = 0; i < h; i++) // loop through rows
     {
@@ -104,9 +113,9 @@ void blur(int height, int width, RGBTRIPLE pixel[height][width])
                         continue;
                     }
 
-                    r += pixel[x][y].rgbtRed;
-                    g += pixel[x][y].rgbtGreen;
-                    b += pixel[x][y].rgbtBlue;
+                    r += image[x][y].rgbtRed;
+                    g += image[x][y].rgbtGreen;
+                    b += image[x][y].rgbtBlue;
                     c++;
                 }
             }
@@ -115,11 +124,20 @@ void blur(int height, int width, RGBTRIPLE pixel[height][width])
             float gavg = round(g / c);
             float bavg = round(b / c);
 
-            pixel[i][j].rgbtRed = ravg;
-            pixel[i][j].rgbtGreen = gavg;
-            pixel[i][j].rgbtBlue = bavg;
+            copyimage[i][j].rgbtRed = ravg;
+            copyimage[i][j].rgbtGreen = gavg;
+            copyimage[i][j].rgbtBlue = bavg;
 
         }
     }
+
+    for (int i = 0; i < h; i++) // loop through rows
+    {
+        for (int j = 0; j < w; j++) // loop throug colums within the row
+        {
+            image[i][j] = copyimage[i][j];
+        }
+    }
+
     return;
 }
