@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #define BUFFER_SIZE 512 //Set the size of buffer to 512 bytes
+
 int main(int argc, char *argv[])
 {
+    
     //Manage initializations
     FILE *f = fopen(argv[1], "r");
     if (f == NULL)//Handles the exception : Bad source file
@@ -15,6 +17,8 @@ int main(int argc, char *argv[])
     char *name = "";
     int name_count = 0;
     int picture_found = 0;
+    
+    //Processing
     while (fread(buffer, BUFFER_SIZE, 1, f) == 1)
     {
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xe0) == 0xe0)
@@ -43,11 +47,14 @@ int main(int argc, char *argv[])
             free(name);
             name_count++;
         }
+        
         if (picture_found == 1)//If there's a picture,write the recovered buffer into it
         {
             fwrite(&buffer, BUFFER_SIZE, 1, picture);
         }
     }
+    
+    //Manage return and closures
     fclose(picture);
     fclose(f);
     return 0;
