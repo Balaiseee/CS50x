@@ -5,6 +5,10 @@
 int main(int argc, char *argv[])
 {
     FILE* f = fopen(argv[1], "r");
+    if (f == NULL)
+    {
+        return 2;
+    }
     FILE* picture = NULL;
     int count = 0;
     unsigned char buffer[BUFFER_SIZE];
