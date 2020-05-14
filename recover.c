@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define BUFFER_SIZE 512 //Set the size of buffer to 512 bytes
+#define BUFFER_SIZE 512//Set the size of buffer to 512 bytes
 
 int main(int argc, char *argv[])
 {
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     //Processing
     while (fread(buffer, BUFFER_SIZE, 1, f) == 1)
     {
-        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xe0) == 0xe0)
+        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xe0) == 0xe0)//Check if it's the signature of a jpg
         {
             if (picture_found == 1)//Check if it's a picture (or the new picture for the other cases)
             {
