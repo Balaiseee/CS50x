@@ -31,13 +31,14 @@ bool check(const char *word)
     // TODO
     return 0;
 }*/
-unsigned int hash(const char *word)
-{
-    unsigned long hash = 5381;
-    int c = 0;
-    while (c == (*word++))
-        hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
-    return hash;
+unsigned int hash(const char *word) {
+
+        unsigned int hash = 5381;
+        int c;
+        while ((c = *word++))
+            hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+        return hash % N;
+
 }
 
 // Loads dictionary into memory, returning true if successful else false
