@@ -6,7 +6,7 @@
 
 #include "dictionary.h"
 
-#define ALPHABET_LENGTH 27
+#define ALPHABET_LENGTH 26
 
 //Define trie_node & trie_tree
 struct trie_node
