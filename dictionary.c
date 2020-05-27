@@ -37,6 +37,10 @@ bool check(const char *word)
 
 unsigned int hash(const char letter)
 {
+    if(letter == '\'')
+    {
+        return ALPHABET_LENGTH-1;
+    }
     //Ignore case by converting the given letter to lowercase
     return tolower(letter) - 97;
 }
