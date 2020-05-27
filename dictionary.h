@@ -2,7 +2,6 @@
 
 #ifndef DICTIONARY_H
 #define DICTIONARY_H
-
 #include <stdbool.h>
 
 // Maximum length for a word
@@ -11,7 +10,7 @@
 
 // Prototypes
 bool check(const char *word);
-unsigned int hash(const char *word);
+unsigned int hash(const char letter);
 bool load(const char *dictionary);
 unsigned int size(void);
 bool unload(void);
