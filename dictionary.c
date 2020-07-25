@@ -7,9 +7,6 @@
 #include <stdlib.h>
 #include "dictionary.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <strings.h>
 
 // Represents a node in a hash table
@@ -21,7 +18,7 @@ typedef struct node
 node;
 
 // Number of buckets in hash table
-const unsigned int N = 26;
+const unsigned int N = 10000;
 
 // Hash table
 node *table[N];
@@ -60,34 +57,6 @@ int word_count = 0;
 // Loads dictionary into memory, returning true if successful else false
 bool load(const char *dictionary)
 {
-    /*// While dictionary's end is not reach
-    FILE *file=fopen(dictionary, "r");
-    if(file==NULL)
-    {
-        printf("Could not open %s\n.", dictionary);
-        return false;
-    }
-    char line[LENGTH];
-    while (fgets(line, sizeof(line), file)) {
-        node *n = malloc(sizeof(node));
-        if (n == NULL)
-        {
-            return false;
-        }
-        strcpy(n->word, line);
-        n->next = NULL;
-        int bucket = hash(n->word);
-        if(table[bucket] == NULL)
-        {
-            table[bucket]=n;
-        } else {
-            n->next=table[bucket];
-            table[bucket]=n;
-        }
-        //printf("%s", table[bucket]->word);
-    }
-    fclose(file);
-    return true;*/
     FILE *file = fopen(dictionary, "r");
     if (file == NULL)
     {
@@ -140,14 +109,13 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {
-    for(int i = 0; i < N; i++)
+    node *head = NULL;
+    node *cursor = head;
+    while (cursor != NULL)
     {
-        while(table[i] != NULL)
-        {
-            node *tmp = table[i]->next;
-            free(table[i]);
-            table[i] = tmp;
-        }
+        node *temp = cursor;
+        cursor = cursor->next;
+        free(temp);
     }
     return true;
 }
