@@ -3,14 +3,14 @@ import re
 import math
 # Gets text from user
 text = get_string("Text: ")
-# Finds & counts all sentences (here count the strong punctuation)
-sentences = len([sentence for sentence in re.split(r"[.?!]", text) if sentence])
+# Finds & counts all sentences
+sentences = len(list(re.finditer(r"[A-Z][\w\s\d\,\'\;\:\"\(\)\[\]\%\$\!\?]*(\.)", text)))
 # Finds & counts all words (here the non-whitespace patterns)
-words = len(re.findall(r'(\S+)',text))
+words = len(re.findall(r'(\S+)', text))
 # Finds & counts all letters
 letters = sum([text.count(key) for key in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'])
 # Calculates the Coleman-Liau index
-ColemanLiau_index = math.ceil(0.0588 * letters/words*100 - 0.296 * sentences/words*100 - 15.8)
+ColemanLiau_index = round(0.0588 * letters/words*100 - 0.296 * sentences/words*100 - 15.8)
 # Manages the display of grades
 if (ColemanLiau_index < 1):
     print("Before Grade 1")
