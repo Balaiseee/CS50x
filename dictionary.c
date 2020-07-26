@@ -21,7 +21,6 @@ const unsigned int N = 1000;
 
 // Hash table
 node *table[N];
-
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {
@@ -64,34 +63,6 @@ int word_count = 0;
 // Loads dictionary into memory, returning true if successful else false
 bool load(const char *dictionary)
 {
-    /*While dictionary's end is not reach
-    FILE *file=fopen(dictionary, "r");
-    if(file==NULL)
-    {
-        printf("Could not open %s\n.", dictionary);
-        return false;
-    }
-    char line[LENGTH];
-    while (fgets(line, sizeof(line), file)) {
-        node *n = malloc(sizeof(node));
-        if (n == NULL)
-        {
-            return false;
-        }
-        strcpy(n->word, line);
-        n->next = NULL;
-        int bucket = hash(n->word);
-        if(table[bucket] == NULL)
-        {
-            table[bucket]=n;
-        } else {
-            n->next=table[bucket];
-            table[bucket]=n;
-        }
-        //printf("%s", table[bucket]->word);
-    }
-    fclose(file);
-    return true;*/
     // Open dictionary
     FILE *file = fopen(dictionary, "r");
     if (file == NULL)
@@ -103,7 +74,7 @@ bool load(const char *dictionary)
     while (fscanf(file, "%s", word) != EOF)
     {
         // Creates node pointers for each new word
-        node *new_node = malloc(sizeof(node));
+        node *new_node = calloc(1,sizeof(node));
         // Checks if malloc succeeded
         if (new_node == NULL)
         {
