@@ -17,7 +17,7 @@ typedef struct node
 node;
 
 // Number of buckets in hash table
-const unsigned int N = 1;
+const unsigned int N = 1000;
 
 // Hash table
 node *table[N];
@@ -37,7 +37,7 @@ bool check(const char *word)
     // Browse the linked list
     while (tmp != NULL)
     {
-        //If the word is contained in one of the nodes return true. If not goes to the next node
+        //If the word is contained in one of the nodes return true else goes to the next node
         if (strcasecmp(tmp->word, lower_word) == 0)
         {
             return true;
