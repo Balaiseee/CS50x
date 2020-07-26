@@ -25,19 +25,25 @@ node *table[N];
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {
-   char lower_word[LENGTH + 1];
+    // Sanitizes word (makes the word lowercase)
+    char lower_word[LENGTH + 1];
     for (int i = 0, n = strlen(word); i < n; i++)
     {
         lower_word[i] = tolower(word[i]);
     }
     lower_word[strlen(word)] = '\0';
+    // Goes to his bucket
     node *tmp = table[hash(lower_word)];
-    while(tmp != NULL)
+    // Browse the linked list
+    while (tmp != NULL)
     {
+        //If the word is contained in one of the nodes return true. If not goes to the next node
         if (strcasecmp(tmp->word, lower_word) == 0)
         {
             return true;
-        } else {
+        }
+        else
+        {
             tmp = tmp->next;
         }
     }
@@ -48,15 +54,17 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     unsigned int hash = 5381;
-    for(int c = 0; word[c] != '\0'; c++)
+    for (int c = 0; word[c] != '\0'; c++)
+    {
         hash = ((hash << 5) + hash) + c;
+    }
     return hash % N;
 }
 int word_count = 0;
 // Loads dictionary into memory, returning true if successful else false
 bool load(const char *dictionary)
 {
-    /*// While dictionary's end is not reach
+    /*While dictionary's end is not reach
     FILE *file=fopen(dictionary, "r");
     if(file==NULL)
     {
@@ -84,27 +92,27 @@ bool load(const char *dictionary)
     }
     fclose(file);
     return true;*/
+    // Open dictionary
     FILE *file = fopen(dictionary, "r");
     if (file == NULL)
     {
         return false;
     }
-    // Scans dictionary word by word (populating hash table with nodes containing words found in dictionary)
+    // Scans dictionary line by line (here word by word)
     char word[LENGTH + 1];
     while (fscanf(file, "%s", word) != EOF)
     {
-        // Mallocs a node for each new word (i.e., creates node pointers)
+        // Creates node pointers for each new word
         node *new_node = malloc(sizeof(node));
-        // Checks if malloc succeeded, returns false if not
+        // Checks if malloc succeeded
         if (new_node == NULL)
         {
-            unload();
             return false;
         }
-        // Copies word into node if malloc succeeds
+        // Copies word into node
         strcpy(new_node->word, word);
 
-        // Initializes & calculates index of word for insertion into hashtable
+        // Index of word for insertion into hashtable
         int h = hash(new_node->word);
 
         // Initializes head to point to hashtable index/bucket
@@ -136,14 +144,14 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {
-    for(int i = 0; i < N; i++)
+    for (int i = 0; i < N; i++)
     {
-            while(table[i] != NULL)
-            {
-                node *tmp = table[i]->next;
-                free(table[i]);
-                table[i] = tmp;
-            }
+        while (table[i] != NULL)
+        {
+            node *tmp = table[i]->next;
+            free(table[i]);
+            table[i] = tmp;
+        }
     }
     return true;
 }
