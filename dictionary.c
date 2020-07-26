@@ -17,7 +17,7 @@ typedef struct node
 node;
 
 // Number of buckets in hash table
-const unsigned int N = 1000;
+const unsigned int N = 143091;
 
 // Hash table
 node *table[N];
@@ -33,10 +33,10 @@ bool check(const char *word)
     lower_word[strlen(word)] = '\0';
     // Goes to his bucket
     node *tmp = table[hash(lower_word)];
-    // Browse the linked list
+    // Browses the linked list
     while (tmp != NULL)
     {
-        //If the word is contained in one of the nodes return true else goes to the next node
+        //If the word is contained in one of the nodes returns true else goes to the next node
         if (strcasecmp(tmp->word, lower_word) == 0)
         {
             return true;
@@ -63,7 +63,7 @@ int word_count = 0;
 // Loads dictionary into memory, returning true if successful else false
 bool load(const char *dictionary)
 {
-    // Open dictionary
+    // Opens dictionary
     FILE *file = fopen(dictionary, "r");
     if (file == NULL)
     {
@@ -73,7 +73,7 @@ bool load(const char *dictionary)
     char word[LENGTH + 1];
     while (fscanf(file, "%s", word) != EOF)
     {
-        // Creates node pointers for each new word
+        // Creates node pointers for each new word (allocates memory and initializes it to a universal zero value to avoid valgrind error as opposed to malloc just allocating memory)
         node *new_node = calloc(1,sizeof(node));
         // Checks if malloc succeeded
         if (new_node == NULL)
@@ -115,8 +115,10 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {
+    // Browses each bucket
     for (int i = 0; i < N; i++)
     {
+        // Frees the associated linked list
         while (table[i] != NULL)
         {
             node *tmp = table[i]->next;
