@@ -3,7 +3,7 @@ import re
 import math
 # Gets text from user
 text = get_string("Text: ")
-# Finds & counts all sentences
+# Finds & counts all sentences (here the strong punctuation)
 sentences = sum([text.count(key) for key in '.?!'])
 # Finds & counts all words (here the non-whitespace patterns)
 words = len(re.findall(r'(\S+)', text))
