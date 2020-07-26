@@ -4,7 +4,7 @@ import math
 # Gets text from user
 text = get_string("Text: ")
 # Finds & counts all sentences
-sentences = len(list(re.finditer(r"[A-Z][\w\s\d\,\'\;\:\"\(\)\[\]\%\$\!\?]*(\.)", text)))
+sentences = sum([text.count(key) for key in '.?!'])
 # Finds & counts all words (here the non-whitespace patterns)
 words = len(re.findall(r'(\S+)', text))
 # Finds & counts all letters
