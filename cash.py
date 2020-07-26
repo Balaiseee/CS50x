@@ -16,7 +16,7 @@ def main():
     print(round(quarters+dimes+nickels+pennies))
 
 
-# Sanitizes the inputs to get a positive integer between 1 and 8
+# Sanitizes the inputs to get a positive integer
 
 
 def get_positive_float():
@@ -25,5 +25,6 @@ def get_positive_float():
         if n > 0:
             break
     return n
+
 
 main()
