@@ -74,7 +74,7 @@ bool load(const char *dictionary)
     while (fscanf(file, "%s", word) != EOF)
     {
         // Creates node pointers for each new word (allocates memory and initializes it to a universal zero value to avoid valgrind error as opposed to malloc just allocating memory)
-        node *new_node = calloc(1,sizeof(node));
+        node *new_node = calloc(1, sizeof(node));
         // Checks if malloc succeeded
         if (new_node == NULL)
         {
