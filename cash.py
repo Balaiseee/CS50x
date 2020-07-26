@@ -5,13 +5,21 @@ from cs50 import get_float
 
 
 def main():
+    # Gets change from user
     change = get_positive_float()*100
+    # Gets the number of quarters
     quarters = change // 25
+    # Update change
     change -= quarters * 25
+    # Gets the number of dimes
     dimes = change // 10
+    # Update change
     change -= dimes * 10
+    # Gets the number of nickels
     nickels = change // 5
+    # Update change
     change -= nickels * 5
+    # Gets the number of pennies
     pennies = change
     print(round(quarters+dimes+nickels+pennies))
 
