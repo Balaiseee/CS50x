@@ -48,10 +48,10 @@ def compute():
     TCTG = max([len(x) // len("TCTG") for x in re.findall(r'((?:TCTG)+)', sequence)], default=0)
     for row in database:
         # Handles large database comparison
-        if(len(row)==9 and int(row["AGATC"])==AGATC and int(row["TTTTTTCT"])==TTTTTTCT and int(row["AATG"])==AATG and int(row["TCTAG"])==TCTAG and int(row["GATA"])==GATA and int(row["TATC"])==TATC and int(row["GAAA"])==GAAA and int(row["TCTG"])==TCTG):
+        if(len(row) == 9 and int(row["AGATC"]) == AGATC and int(row["TTTTTTCT"]) == TTTTTTCT and int(row["AATG"]) == AATG and int(row["TCTAG"]) == TCTAG and int(row["GATA"]) == GATA and int(row["TATC"]) == TATC and int(row["GAAA"]) == GAAA and int(row["TCTG"]) == TCTG):
             return str(row["name"])
         # Handles small database comparison
-        if(len(row)==4 and int(row["AATG"])==AATG and int(row["TATC"])==TATC and int(row["AGATC"])==AGATC):
+        if(len(row) == 4 and int(row["AATG"]) == AATG and int(row["TATC"]) == TATC and int(row["AGATC"]) == AGATC):
             return str(row["name"])
     return "No match"
 
