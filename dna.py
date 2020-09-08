@@ -3,7 +3,8 @@ import csv
 import re
 
 
-def letters(input): # Filters a string to  only contain letters
+# Filters a string to  only contain letters
+def letters(input):
     valids = []
     for character in input:
         if character.isalpha():
@@ -11,8 +12,8 @@ def letters(input): # Filters a string to  only contain letters
     return ''.join(valids)
 
 
+# Handles STR parse and read in array
 def parse():
-    # Handles STR parse and read in array
     sequence = ""
     with open(sys.argv[2], 'r') as txtfile:
         fluxsequence = csv.reader(txtfile)
