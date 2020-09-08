@@ -14,11 +14,7 @@ def letters(input):
 
 # Handles STR parse and read in array
 def parse():
-    sequence = ""
-    with open(sys.argv[2], 'r') as txtfile:
-        fluxsequence = csv.reader(txtfile)
-        for row in fluxsequence:
-            sequence = str(row)
+    sequence = next(csv.reader(open(sys.argv[2])))
     sequencelist = []
     for element in letters(list(sequence)):
         sequencelist.append(element)
@@ -30,7 +26,7 @@ def parse():
 def compute():
     (sequence, database) = parse()
     # Converts list into string
-    sequence = ''.join(map(str, sequence))
+    sequence = ''.join(sequence)
     # Finds number of consecutive TTTTTTCT sequence
     TTTTTTCT = max([len(x) // len("TTTTTTCT") for x in re.findall(r'((?:TTTTTTCT)+)', sequence)], default=0)
     # Finds number of consecutive AGATC sequence
@@ -50,10 +46,10 @@ def compute():
     for row in database:
         # Handles large database comparison
         if(len(row) == 9 and int(row["AGATC"]) == AGATC and int(row["TTTTTTCT"]) == TTTTTTCT and int(row["AATG"]) == AATG and int(row["TCTAG"]) == TCTAG and int(row["GATA"]) == GATA and int(row["TATC"]) == TATC and int(row["GAAA"]) == GAAA and int(row["TCTG"]) == TCTG):
-            return str(row["name"])
+            return row["name"]
         # Handles small database comparison
         if(len(row) == 4 and int(row["AATG"]) == AATG and int(row["TATC"]) == TATC and int(row["AGATC"]) == AGATC):
-            return str(row["name"])
+            return row["name"]
     return "No match"
 
 
