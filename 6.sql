@@ -1,1 +1,1 @@
-SELECT ROUND(AVG(rating),2) FROM ratings;
+SELECT CAST(AVG(rating) AS decimal(3, 2) FROM ratings;
