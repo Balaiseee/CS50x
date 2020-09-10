@@ -1,0 +1,1 @@
+SELECT CAST(AVG(rating) AS decimal(3, 2)) FROM ratings;
