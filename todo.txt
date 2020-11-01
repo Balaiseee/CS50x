@@ -1,0 +1,6 @@
+register - OK
+quote - OK
+index - OK
+buy - OK
+sell - OK
+history
