@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/css/faq.css" />
+</head>
+
+<body>
+  <nav class="navbar navbar-light navbar-expand-md bg-light justify-content-md-center justify-content-start"> <a class="navbar-brand d-md-none d-inline" href="/">Logzz</a>
+    <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#collapsingNavbar2"> <span class="navbar-toggler-icon"></span> </button>
+    <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar2">
+      <ul class="navbar-nav mx-auto text-md-center text-left">
+        <li class="nav-item"> <a class="nav-link" href="/exercice">Modification of exercise</a> </li>
+        <li class="nav-item my-auto"> <a class="nav-link navbar-brand mx-0 d-none d-md-inline" href="/">Consult a workout</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="/seance">Modification of workout</a> </li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="text-center">FAQ</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="nav nav-pills faq-nav" id="faq-tabs" role="tablist" aria-orientation="vertical">
+            <a href="#tab1" class="nav-link active" data-toggle="pill" role="tab" aria-controls="tab1" aria-selected="true">General overview</a>
+            <a href="#tab4" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab4" aria-selected="false">Sport overview</a>
+            <a href="#tab2" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab2" aria-selected="false">Technical overview</a>
+            <a href="#tab3" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab3" aria-selected="false">About me</a>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="tab-content" id="faq-tab-content">
+            <div class="tab-pane show active" id="tab1" role="tabpanel" aria-labelledby="tab1">
+              <div class="accordion" id="accordion-tab-1">
+                <div class="card">
+                  <div class="card-header" id="accordion-tab-1-heading-1">
+                    <h5>
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">What is this project about?</button>
+                    </h5>
+                  </div>
+                  <div class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
+                    <div class="card-body">
+                      <p>This project is an <strong>online training log</strong>. Unlike a physical training log, it will not let its user down (you can't lose it, you can't destroy it, ...), moreover it gives us lots of additional data like graphs
+                        of volume by muscle group, …</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="accordion-tab-1-heading-2">
+                    <h5>
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2">What audience is it aimed at?</button>
+                    </h5>
+                  </div>
+                  <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                    <div class="card-body">
+                      <p>This project is designed mostly for <strong>confirmed athletes</strong>. It is not guided and the user must know how to interpret a volume graph, the average RPE, … </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="accordion-tab-1-heading-3">
+                    <h5>
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-3" aria-expanded="false" aria-controls="accordion-tab-1-content-3">What are the limits and avenues for improvement of this
+                        project?</button>
+                    </h5>
+                  </div>
+                  <div class="collapse" id="accordion-tab-1-content-3" aria-labelledby="accordion-tab-1-heading-3" data-parent="#accordion-tab-1">
+                    <div class="card-body">
+                      <p>This version of the project was designed to handle <strong>only one user</strong>. A useful improvement is to handle many users (implement a system of account).</p>
+                      <p class="text-right font-italic"><a href="https://flask-login.readthedocs.io/en/latest/" target="_blank" rel="noopener">Flask Login</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab2" role="tabpanel" aria-labelledby="tab2">
+              <div class="accordion" id="accordion-tab-2">
+                <div class="card">
+                  <div class="card-header" id="accordion-tab-2-heading-1">
+                    <h5>
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">How is the database structured?</button>
+                    </h5>
+                  </div>
+                  <div class="collapse show" id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                    <div class="card-body">
+                      <img src="/static/img/dbdiagram.svg" id="myImg" class="full-width">
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="accordion-tab-2-heading-2">
+                    <h5>
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-2" aria-expanded="false" aria-controls="accordion-tab-2-content-2">How are volume graphs by muscle group generated?</button>
+                    </h5>
+                  </div>
+                  <div class="collapse" id="accordion-tab-2-content-2" aria-labelledby="accordion-tab-2-heading-2" data-parent="#accordion-tab-2">
+                    <div class="card-body">
+                      <p>To achieve this goal, I use <strong>Matplotlib</strong> (a comprehensive library for creating static, animated, and interactive visualizations in Python).</p>
+                      <p class="text-right font-italic"><a href="https://matplotlib.org/3.3.2/Matplotlib.pdf" target="_blank" rel="noopener">Matplotlib Docs</a></p>
+                      <p class="text-right font-italic"><a href="https://stackoverflow.com/a/50728936" target="_blank" rel="noopener">Link Matplotlib with Flask</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="accordion-tab-2-heading-3">
+                    <h5>
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-3" aria-expanded="false" aria-controls="accordion-tab-2-content-3">How do interactions with flask and the sqlite database
+                        work?</button>
+                    </h5>
+                  </div>
+                  <div class="collapse" id="accordion-tab-2-content-3" aria-labelledby="accordion-tab-2-heading-3" data-parent="#accordion-tab-2">
+                    <div class="card-body">
+                      <p>I use the built-in <strong>CS50 library</strong> to craft and send sql query to a sqlite3 database.</p>
+                      <p class="text-right font-italic"><a href="https://cs50.readthedocs.io/libraries/cs50/python/#cs50.SQL" target="_blank" rel="noopener">CS50 SQL Docs</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab3" role="tabpanel" aria-labelledby="tab3">
+              <div class="accordion" id="accordion-tab-3">
+                <div class="card">
+                  <div class="card-header" id="accordion-tab-3-heading-1">
+                    <h5>
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-1" aria-expanded="false" aria-controls="accordion-tab-3-content-1">Who am I ?</button>
+                    </h5>
+                  </div>
+                  <div class="collapse show" id="accordion-tab-3-content-1" aria-labelledby="accordion-tab-3-heading-1" data-parent="#accordion-tab-3">
+                    <div class="card-body">
+                      <p>My name is <strong>Stanislas LUCINSKI-KADRI</strong>, I'm a computer science and fitness enthusiast. I’m currently studying at the ESILV engineering school, however I’m also very curious and a big fan of self-pace learning,
+                        that’s why I love this CS50 course!</p>
+                      <p class="text-right font-italic"><a href="https://www.linkedin.com/in/stanislas-lucinskikadri/" target="_blank" rel="noopener"><img src="/static/img/in.svg" width="16" /></a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="accordion-tab-3-heading-2">
+                    <h5>
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-2" aria-expanded="false" aria-controls="accordion-tab-3-content-2">Why this project ?</button>
+                    </h5>
+                  </div>
+                  <div class="collapse" id="accordion-tab-3-content-2" aria-labelledby="accordion-tab-3-heading-2" data-parent="#accordion-tab-3">
+                    <div class="card-body">
+                      <p>I had the great opportunity to be <strong>coached by a world champion</strong> in powerlifting, he taught me to have a global vision of the variable of my training like the fatigue management or the bloc periodization… It is
+                        to continue in this way that I chose to carry out this project, <strong>simplifying and centralizing the data</strong> in a database and providing me with feedback on them.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab4" role="tabpanel" aria-labelledby="tab4">
+              <div class="accordion" id="accordion-tab-4">
+                <div class="card">
+                  <div class="card-header" id="accordion-tab-4-heading-1">
+                    <h5>
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-1" aria-expanded="false" aria-controls="accordion-tab-4-content-1">What is RPE?</button>
+                    </h5>
+                  </div>
+                  <div class="collapse show" id="accordion-tab-4-content-1" aria-labelledby="accordion-tab-4-heading-1" data-parent="#accordion-tab-4">
+                    <div class="card-body">
+                      <p>RPE stands for Rate of Perceived Exertion, or basically <strong>how hard a particular set felt</strong>. It’s fairly common to hear people tell about an “easy triple” or a single they really had to grind out. These terms are
+                        quite ambiguous and will mean different things to different people. It's noted by a @ and a number of a numerical scale from one to ten based on how hard a set feels.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="accordion-tab-4-heading-2">
+                    <h5>
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-2" aria-expanded="false" aria-controls="accordion-tab-4-content-2">What is volume?</button>
+                    </h5>
+                  </div>
+                  <div class="collapse" id="accordion-tab-4-content-2" aria-labelledby="accordion-tab-4-heading-2" data-parent="#accordion-tab-4">
+                    <div class="card-body">
+                      <p>Volume is <strong>the total weight you lifted</strong>. If you did 5x5x200, then 5*5*200 is 5000 kg. Since the weight lifted varies according to leverages, this can only be compared to the same lift. Here as I always use the
+                        same exercise for each muscle group, you can approximate the lift to the muscle group, this is what is done with the volume graphs by muscle group.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="myModal" class="modal">
+    <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+    <a href="https://dbdiagram.io/d/5f9c92773a78976d7b79e597" target="_blank" rel="noopener"><img class="modal-content" id="img01"></a>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="/static/js/modal.js"></script>
+</body>
+
+</html>

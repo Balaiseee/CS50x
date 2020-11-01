@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block content %}
+		<main>
+			<div class="jumbotron">
+				<div class="container">
+					<h1 class="text-center">Logzz</h1>
+					<p class="lead text-center">This webapp is realized within the <a href="https://cs50.harvard.edu/x/2020/">CS50x</a> course final project by Stanislas LUCINSKI-KADRI under the direction of <a href="https://cs.harvard.edu/malan/">David J. Malan</a></p>
+					<p class="text-center"><a type="button" class="btn btn-outline-dark" href="faq" role="button">FAQ</a></p>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						{% if seances %}
+						<h2 class="text-center">Consult a workout</h2>
+						<hr>
+						<form method="POST" action="{{ url_for('index') }}">
+							<div class="form-group">
+								<div class="input-group mx-auto w-50">
+									<select name="seance" class="selectpicker form-control">
+									{% for seance in seances %}
+									<option value="{{ seance["id"] }}" {% if seance["date"] == date %} selected {% endif %}>{{ seance["date"] }}</option>
+									{% endfor %}
+									</select>
+								</div>
+								<br>
+								<div class="input-group">
+									<button type="submit" class="btn btn-lg btn-primary btn-block mx-auto w-25">Go</button>
+								</div>
+							</div>
+						</form>
+						<br>
+						{% endif %}
+						{% if id %}
+						<h2>{{ date}} workout</h2>
+						<ul>
+							{% for row in rows %}
+							<li> {{ row["exercice"]}}, {{ row["serie"]}}x{{ row["repetition"]}}{% if row["charge"] != None and row["charge"] != "" and row["charge"] != 0 %}x{{ row["charge"]}}kg{% endif %}{% if row["rpe"] != None and row["rpe"] != ""  %} @{{ row["rpe"]}}{% endif %}{% if row["commentaire"] != None %} {{ row["commentaire"]}} {% endif %}</li>
+							{% endfor %}
+						</ul>
+						<h3>Additional data</h3>
+						{% if rpeAverage != None and rpeAverage != "0.0" %}
+						<h4>Average RPE</h4>
+						<p>{{rpeAverage}}</p>
+						{% endif %}
+						<h4>Volume</h4>
+						<ul>
+							{% for volume in volumes %}
+							{% if volume["sum(serie*repetition*charge)"] != None and volume["sum(serie*repetition*charge)"] != 0 %}<li>{{ volume["groupe"]}}: {{ volume["sum(serie*repetition*charge)"]}}kg</li>{% endif %}
+							{% endfor %}
+						</ul>
+						{% endif %}
+						{% if not id %}
+						<h2 class="text-center">Consult the volume</h2>
+						<hr>
+						<form method="POST" action="{{ url_for('volume') }}">
+							<div class="form-group">
+								<div class="input-group mx-auto w-50">
+									<select name="groupe" class="selectpicker form-control">
+									{% for grp in groupes %}
+									<option value="{{grp["groupe"]}}" {% if groupe and grp["groupe"] == groupe %} selected {% endif %}>{{grp["groupe"]}}</option>
+									{% endfor %}
+									</select>
+								</div>
+								<br>
+								<div class="input-group">
+									<button type="submit" class="btn btn-lg btn-primary btn-block mx-auto w-25">Go</button>
+								</div>
+							</div>
+						</form>
+						{% endif %}
+						{% if groupe %}
+						<h3 class="text-center">Volume: {{groupe.lower()}}</h3>
+						<br>
+						<img src="/plot/{{groupe}}"class="mx-auto d-block" style="max-width: 100%;"/>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</main>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	</body>
+</html>
+{% endblock %}
