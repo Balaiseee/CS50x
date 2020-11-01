@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% block content %}
+	<main>
+		<div class="jumbotron">
+			<div class="container">
+				<h1 class="text-center">Exercise</h1>
+			</div>
+		</div>
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-6 mx-auto text-center">
+						<h2>Add exercise</h2>
+						<hr>
+						<form class="justify-content-center" action="{{ url_for('add') }}" method="post">
+							<div class="form-group w-50 mx-auto">
+								<input type="text" name="exercice" placeholder="Exercice" class="w-75" list="exercices">
+								<datalist id="exercices">
+									{% for exercice in exercices %}
+								    <option>{{exercice["exercice"]}}</option>
+								    {% endfor %}
+								</datalist>
+								<hr>
+								<input type="text" name="groupe" placeholder="Muscle group" class="w-75" list="groups">
+								<datalist id="groups">
+									{% for groupe in groupes %}
+								    <option>{{groupe["groupe"]}}</option>
+								    {% endfor %}
+								</datalist>
+								<hr>
+								<input type="range" name="serie" class="form-control-range custom-range" id="serieInternalInputID" value="1" min="1" max="10" oninput="serieInternalOutputID.value = serieInternalInputID.value">
+								<label for="serieInternalInputID">Serie(s):
+									<output id="serieInternalOutputID">1</output>
+								</label>
+								<input type="range" name="repetition" class="form-control-range custom-range" id="repetitionInternalInputID" value="1" min="1" max="10" oninput="repetitionInternalOutputID.value = repetitionInternalInputID.value">
+								<label for="repetitionInternalInputID">Repetition(s):
+									<output id="repetitionInternalOutputID">1</output>
+								</label>
+								<input type="range" name="charge" class="form-control-range custom-range" id="chargeInternalInputID" value="0" min="0" max="500" step="2.5" oninput="chargeInternalOutputID.value = chargeInternalInputID.value">
+								<label for="chargeInternalInputID">
+									<output id="chargeInternalOutputID">0</output> kg</label>
+								<input type="range" name="rpe" class="form-control-range custom-range" id="rpeInternalInputID" value="1" min="1" max="10" oninput="rpeInternalOutputID.value = rpeInternalInputID.value">
+								<label for="rpeInternalInputID">@ <output id="rpeInternalOutputID">1</output>
+								</label>
+								<input type="range" name="ordre" class="form-control-range custom-range" id="ordreInternalInputID" value="1" min="1" max="5" oninput="ordreInternalOutputID.value = ordreInternalInputID.value">
+								<label for="ordreInternalInputID">Workout order:
+									<output id="ordreInternalOutputID">1</output>
+								</label>
+								<hr>
+								 <select name="seance" class="selectpicker form-control">
+					          		{% for seance in seances %}
+					          		<option value="{{ seance["id"] }}">{{seance["date"]}}</option>
+					          		{% endfor %}
+					          	</select>
+								<hr>
+								<textarea name="commentaire" placeholder="Comment" class="w-100"></textarea>
+								<hr>
+								<button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+							</div>
+						</form>
+						<hr>
+					</div>
+					<div class="col-sm-12 col-md-6 mx-auto text-center">
+						<h2>Delete exercise</h2>
+						<hr>
+						<form method="POST" action="{{ url_for('delete') }}">
+							<div class="form-group">
+								<div class="input-group mx-auto w-50">
+									<select name="id" class="selectpicker form-control">
+										{% for atelier in ateliers %}
+										<option value="{{ atelier["id"] }}">{{ atelier["exercice"]}}, {{ atelier["serie"]}}x{{ atelier["repetition"]}}{% if atelier["charge"] != None and atelier["charge"] != "" %}x{{ atelier["charge"]}}kg{% endif %}{% if atelier["rpe"] != None and atelier["rpe"] != "" %} @{{ atelier["rpe"]}}{% endif %} {{atelier["date"]}}</option>
+										{% endfor %}
+									</select>
+								</div>
+								<div class="form-group w-50 mx-auto">
+									<hr>
+								</div>
+								<div class="input-group">
+									<button type="submit" class="btn btn-lg btn-primary btn-block mx-auto w-50">Delete</button>
+								</div>
+							</div>
+						</form>
+						<hr>
+						<h2>Update exercise</h2>
+						<hr>
+					    <form method="POST" action="{{ url_for('update') }}">
+					      	<div class="form-group">
+					        	<div class="input-group mx-auto w-50">
+					          		<select name="id" class="selectpicker form-control">
+					          			{% for atelier in ateliers %}
+					          			<option value="{{ atelier["id"] }}">{{ atelier["exercice"]}}, {{ atelier["serie"]}}x{{ atelier["repetition"]}}{% if atelier["charge"] != None and atelier["charge"] != "" %}x{{ atelier["charge"]}}kg{% endif %}{% if atelier["rpe"] != None and atelier["rpe"] != "" %} @{{ atelier["rpe"]}}{% endif %} {{atelier["date"]}}</option>
+					          			{% endfor %}
+					          		</select>
+					        	</div>
+					        	<br>
+					        	<div class="input-group mx-auto w-50">
+					          		<select name="type" class="selectpicker form-control" id="update">
+					          			{% for categorie in ateliers[0].keys() %}
+					          			<option value="{{ categorie }}">{{categorie.capitalize()}}</option>
+					          			{% endfor %}
+					          		</select>
+					        	</div>
+					        	<br>
+					        	<div class="input-group mx-auto w-50">
+					          		<input id="contenu" class="mx-auto w-100" name="contenu" type="text">
+					        	</div>
+					        	<hr>
+					        	<div class="input-group">
+					          		<button id="submit" type="submit" class="btn btn-lg btn-primary btn-block mx-auto w-50">Update</button>
+					        	</div>
+					      	</div>
+					    </form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	<script>
+		types = {
+			exercice: "text",
+			groupe: "text",
+			commentaire: "text",
+			date: "date",
+			id: "number",
+			serie: "number",
+			repetition: "number",
+			charge: "number",
+			ordre: "number"
+		}
+		$('#update').on('change', function()
+		{
+			key = $("#update option:selected").text().toLowerCase()
+			if (key in types)
+				{$('#contenu').attr('type', types[key]);}
+		});
+		$("#submit").click(function(event){
+		    content = $("#contenu").val()
+		    if (content == "")
+		    {
+		    	alert("Please enter a valid input")
+		    	event.preventDefault();
+		    }
+		});
+	</script>
+</body>
+</html>
+{% endblock %}

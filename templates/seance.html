@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+	<main>
+		<div class="jumbotron">
+			<div class="container">
+				<h1 class="text-center">Workout</h1>
+			</div>
+		</div>
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-6 mx-auto text-center">
+						<h2>Add workout</h2>
+						<hr>
+						<form class="justify-content-center" action="{{ url_for('add_seance') }}" method="post">
+							<div class="form-group w-50 mx-auto">
+								<input type="date" name="date" class="w-100">
+								<hr>
+								<select name="bloc" class="selectpicker form-control">
+									{% for bloc in blocs %}
+									<option value="{{ bloc["id"] }}">Bloc n°{{ bloc["id"] }}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<hr>
+							<div class="form-group mx-auto w-50">
+								<button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+							</div>
+						</form>
+						<hr>
+					</div>
+					<div class="col-sm-12 col-md-6 mx-auto text-center">
+						<h2>Delete workout</h2>
+						<hr>
+						<form method="POST" action="{{ url_for('delete_seance') }}">
+							<div class="form-group">
+								<div class="input-group mx-auto w-50">
+									<select name="id" class="selectpicker form-control">
+										{% for seance in seances %}
+										<option value="{{ seance["id"] }}">{{ seance["date"] }}</option>
+										{% endfor %}
+									</select>
+								</div>
+								<div class="form-group mx-auto w-50">
+									<hr>
+								</div>
+								<div class="input-group">
+									<button type="submit" class="btn btn-lg btn-primary btn-block mx-auto w-50">Delete</button>
+								</div>
+							</div>
+						</form>
+						<hr>
+						<h2>Update workout</h2>
+						<hr>
+					    <form method="POST" action="{{ url_for('update_seance') }}">
+					      	<div class="form-group">
+					        	<div class="input-group mx-auto w-50">
+					          		<select name="id" class="selectpicker form-control">
+					          			{% for seance in seances %}
+					          			<option value="{{ seance["id"] }}">{{ seance["date"] }}</option>
+					          			{% endfor %}
+					          		</select>
+					        	</div>
+								<div class="form-group mx-auto w-50">
+									<hr>
+								</div>
+					        	<div class="input-group mx-auto w-50">
+					          		<input type="date" class="mx-auto w-100" name="date">
+					        	</div>
+					        	<hr>
+					        	<div class="input-group">
+					          		<button type="submit" class="btn btn-lg btn-primary btn-block mx-auto w-50">Update</button>
+					        	</div>
+					      	</div>
+					    </form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}
